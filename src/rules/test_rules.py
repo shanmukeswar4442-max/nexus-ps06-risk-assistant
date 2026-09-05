@@ -1,5 +1,5 @@
 """
-Unit tests for Pure-Python Risk Rule Engine (NexusTiq24 PS06).
+Unit tests for Pure-Python Risk Rule Engine (NexusTiq24 PS06) — INR Edition.
 Tests cover:
 - Clean customer (0 rules fired, attention_needed = False)
 - Anomalous customer (multiple rules fired, attention_needed = True, exact cited IDs)
@@ -68,7 +68,6 @@ def test_anomalous_customer(anomalous_customer_data):
     assert "RULE_LARGE_TRANSFER" in triggered_rule_ids
     assert "RULE_PAYEE_BURST" in triggered_rule_ids
 
-    # Verify specific planted transaction IDs are cited
     flagged_ids = result["flagged_transaction_ids"]
     assert "TXN-88219" in flagged_ids
     assert "TXN-88220" in flagged_ids or "TXN-88221" in flagged_ids
@@ -78,7 +77,6 @@ def test_borderline_customer(borderline_customer_data):
     txs = borderline_customer_data.get("transactions", [])
     result = evaluate_customer_risk(txs, borderline_customer_data.get("customer_id"))
 
-    # System must demonstrate restraint and avoid false alarm
     assert result["attention_needed"] is False or result["confidence_level"] == "LOW"
     assert result["overall_risk_score"] < 40
 
@@ -94,13 +92,13 @@ def test_empty_transactions():
 
 def test_isolated_large_transfer():
     txs = [
-        {"transaction_id": f"TXN-{i}", "amount": 100.0, "timestamp": f"2026-05-01T10:{i:02d}:00", "category": "Retail"}
+        {"transaction_id": f"TXN-{i}", "amount": 5000.0, "timestamp": f"2026-05-01T10:{i:02d}:00", "category": "Retail"}
         for i in range(10)
     ]
-    # Add giant outlier transfer
+    # Add giant outlier transfer in INR
     txs.append({
         "transaction_id": "TXN-LARGE-OUTLIER",
-        "amount": 8500.0,
+        "amount": 850000.0,
         "timestamp": "2026-05-02T14:00:00",
         "category": "Transfer",
         "payee": "Unknown Offshore Corp"
@@ -114,8 +112,8 @@ def test_isolated_large_transfer():
 
 def test_isolated_odd_hours():
     txs = [
-        {"transaction_id": "TXN-ODD-1", "amount": 1200.0, "timestamp": "2026-06-01T03:15:00", "channel": "Wire Transfer", "payee": "Offshore Bank"},
-        {"transaction_id": "TXN-NORMAL-1", "amount": 50.0, "timestamp": "2026-06-01T12:00:00", "channel": "Debit Card", "payee": "Cafe"}
+        {"transaction_id": "TXN-ODD-1", "amount": 120000.0, "timestamp": "2026-06-01T03:15:00", "channel": "Wire Transfer", "payee": "Offshore Bank"},
+        {"transaction_id": "TXN-NORMAL-1", "amount": 250.0, "timestamp": "2026-06-01T12:00:00", "channel": "UPI", "payee": "Chai Point"}
     ]
 
     result = evaluate_customer_risk(txs, "CUST-TEST-ODD")

@@ -1,5 +1,6 @@
 /**
  * NexusRisk AI — Transaction Risk Investigation Assistant Frontend Application Logic
+ * Supports Real-Time Transaction Addition & Indian Rupees (₹) Formatting.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,6 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const analyzeBtn = document.getElementById('analyze-btn');
   const loadingSpinner = document.getElementById('loading-spinner');
   const dashboard = document.getElementById('investigation-dashboard');
+
+  const addTxnForm = document.getElementById('add-txn-form');
+  const txnTimeInput = document.getElementById('txn-time');
+  const txnPayeeInput = document.getElementById('txn-payee');
+  const txnDescInput = document.getElementById('txn-desc');
+  const txnAmountInput = document.getElementById('txn-amount');
+  const txnChannelSelect = document.getElementById('txn-channel');
+  const txnCategorySelect = document.getElementById('txn-category');
 
   const attentionStatusEl = document.getElementById('attention-status');
   const customerMetaEl = document.getElementById('customer-meta-display');
@@ -32,6 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const ledgerCountMeta = document.getElementById('ledger-count-meta');
   const filterBtns = document.querySelectorAll('.filter-btn');
 
+  // Set default datetime input to now
+  const now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+  txnTimeInput.value = now.toISOString().slice(0, 16);
+
   // 1. Customer Preset Button Event Handlers
   presetButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -43,7 +57,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 2. Drag & Drop File Upload Handlers
+  // 2. Real-Time Add Transaction Form Submit Handler
+  addTxnForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const newTxn = {
+      transaction_id: `TXN-LIVE-${Date.now().toString().slice(-5)}`,
+      customer_id: selectedCustomerId,
+      timestamp: new Date(txnTimeInput.value).toISOString(),
+      description: txnDescInput.value.trim(),
+      payee: txnPayeeInput.value.trim(),
+      amount: parseFloat(txnAmountInput.value),
+      channel: txnChannelSelect.value,
+      category: txnCategorySelect.value,
+      status: "Completed"
+    };
+
+    // If currently operating on a preset customer, fetch full baseline history first before adding live transaction
+    if (!customTransactionsData) {
+      try {
+        const res = await fetch(`/api/customers/${selectedCustomerId}`);
+        if (res.ok) {
+          const cData = await res.json();
+          customTransactionsData = cData.transactions || [];
+        } else {
+          customTransactionsData = [];
+        }
+      } catch (err) {
+        customTransactionsData = [];
+      }
+    }
+
+    // Add new live transaction
+    customTransactionsData.push(newTxn);
+
+    // Reset form inputs for next entry
+    txnPayeeInput.value = '';
+    txnDescInput.value = '';
+    txnAmountInput.value = '';
+
+    alert(`Live transaction [${newTxn.transaction_id}] added! Running real-time risk investigation...`);
+    runAnalysis();
+  });
+
+  // 3. Drag & Drop File Upload Handlers
   browseBtn.addEventListener('click', () => fileInput.click());
 
   fileInput.addEventListener('change', (e) => {
@@ -76,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
         customTransactionsData = Array.isArray(parsed) ? parsed : (parsed.transactions || []);
         selectedCustomerId = parsed.customer_id || 'CUSTOM-UPLOAD';
         
-        // Unselect preset buttons
         presetButtons.forEach(b => b.classList.remove('active'));
         alert(`Loaded ${customTransactionsData.length} transactions from uploaded JSON!`);
         runAnalysis();
@@ -87,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     reader.readAsText(file);
   }
 
-  // 3. Run Analysis Button
+  // 4. Run Analysis Button
   analyzeBtn.addEventListener('click', () => runAnalysis());
 
   async function runAnalysis() {
@@ -114,7 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await response.json();
       currentAnalysisData = data;
 
-      // Also fetch raw customer info if using sample customer
       let rawCustomer = null;
       if (!customTransactionsData) {
         const cRes = await fetch(`/api/customers/${selectedCustomerId}`);
@@ -130,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 4. Render Dashboard Components
+  // 5. Render Dashboard Components
   function renderDashboard(data, rawCustomer) {
     const attentionNeeded = data.attention_needed;
 
@@ -173,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `).join('');
     }
 
-    // Baseline Stats
+    // Baseline Stats (INR ₹)
     const stats = data.summary_stats || {};
     baselineStatsContainer.innerHTML = `
       <div class="stat-box">
@@ -182,11 +237,11 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
       <div class="stat-box">
         <span class="stat-lbl">HISTORICAL AVG</span>
-        <span class="stat-val">USD ${(stats.avg_amount || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+        <span class="stat-val">₹${(stats.avg_amount || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
       </div>
       <div class="stat-box">
         <span class="stat-lbl">90TH PERCENTILE</span>
-        <span class="stat-val">USD ${(stats.p90_amount || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+        <span class="stat-val">₹${(stats.p90_amount || 0).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
       </div>
       <div class="stat-box">
         <span class="stat-lbl">KNOWN PAYEES</span>
@@ -194,17 +249,17 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
 
-    // Narrative Report Body (Simple markdown to HTML renderer)
+    // Narrative Report Body
     reportSourceTag.textContent = `Source: ${data.report_source === 'gemini_llm' ? 'Gemini 2.5 Flash' : 'Deterministic Rule Engine Fallback'}`;
     narrativeReportBody.innerHTML = formatMarkdown(data.narrative_report);
 
     // Transaction Ledger
-    const allTxs = rawCustomer ? rawCustomer.transactions : (customTransactionsData || []);
+    const allTxs = customTransactionsData ? customTransactionsData : (rawCustomer ? rawCustomer.transactions : []);
     const flaggedSet = new Set(data.flagged_transaction_ids || []);
     renderLedger(allTxs, flaggedSet, 'all');
   }
 
-  // 5. Render Transaction Table
+  // 6. Render Transaction Table with Indian Rupee formatting
   function renderLedger(txs, flaggedSet, filterMode) {
     const displayTxs = filterMode === 'flagged' ? txs.filter(t => flaggedSet.has(t.transaction_id)) : txs;
     ledgerCountMeta.textContent = `Showing ${displayTxs.length} of ${txs.length} total transactions`;
@@ -223,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <td>${t.description || 'N/A'}</td>
           <td><strong>${t.payee || 'N/A'}</strong></td>
           <td><span style="font-size: 11px; background: var(--bg-tertiary); padding: 2px 6px; border-radius: 4px;">${t.channel || 'N/A'}</span></td>
-          <td class="text-right" style="font-family: var(--font-mono); font-weight: 600;">USD ${(t.amount || 0).toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+          <td class="text-right" style="font-family: var(--font-mono); font-weight: 600;">₹${(t.amount || 0).toLocaleString('en-IN', {minimumFractionDigits: 2})}</td>
           <td>${isFlagged ? '<span class="badge badge-high">⚠️ Flagged</span>' : '<span style="color: var(--text-muted); font-size: 11px;">Normal</span>'}</td>
         </tr>
       `;
@@ -238,11 +293,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const filterMode = btn.getAttribute('data-filter');
       if (currentAnalysisData) {
         const flaggedSet = new Set(currentAnalysisData.flagged_transaction_ids || []);
-        // Fetch current txs
-        fetch(`/api/customers/${selectedCustomerId}`)
-          .then(r => r.json())
-          .then(cData => renderLedger(cData.transactions || [], flaggedSet, filterMode))
-          .catch(() => renderLedger(customTransactionsData || [], flaggedSet, filterMode));
+        if (customTransactionsData) {
+          renderLedger(customTransactionsData, flaggedSet, filterMode);
+        } else {
+          fetch(`/api/customers/${selectedCustomerId}`)
+            .then(r => r.json())
+            .then(cData => renderLedger(cData.transactions || [], flaggedSet, filterMode))
+            .catch(() => renderLedger([], flaggedSet, filterMode));
+        }
       }
     });
   });
@@ -275,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!ts) return '';
     try {
       const dt = new Date(ts);
-      return dt.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+      return dt.toLocaleString('en-IN', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
     } catch (e) {
       return ts;
     }

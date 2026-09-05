@@ -17,12 +17,12 @@
         <div class="logo-icon">🛡️</div>
         <div>
           <h1>NexusRisk Assistant</h1>
-          <p class="subtitle">Banking Fraud Desk — Deterministic Risk Engine + Gemini Narrative Layer</p>
+          <p class="subtitle">Banking Fraud Desk — Deterministic Risk Engine + Gemini Narrative Layer (INR Edition)</p>
         </div>
       </div>
       <div class="header-badges">
         <span class="track-badge">TRACK_ID=PS06</span>
-        <span class="status-badge" id="system-status">● System Ready</span>
+        <span class="status-badge" id="system-status">● System Ready (INR ₹)</span>
       </div>
     </header>
 
@@ -32,7 +32,7 @@
       <aside class="sidebar-panel">
         <div class="panel-card">
           <h2>Select Customer Profile</h2>
-          <p class="panel-desc">Choose a pre-generated multi-month transaction history or upload custom JSON data.</p>
+          <p class="panel-desc">Choose a pre-generated multi-month history, upload JSON, or enter live transactions in real-time.</p>
           
           <div class="customer-presets" id="customer-preset-buttons">
             <button class="preset-btn active" data-cid="CUST-1002">
@@ -40,7 +40,7 @@
                 <span class="c-name">Marcus Vance</span>
                 <span class="badge badge-high">High Risk</span>
               </div>
-              <div class="btn-sub">CUST-1002 • Planted Anomalies (3 rules)</div>
+              <div class="btn-sub">CUST-1002 • Planted Anomalies (₹9.5L Wire + Crypto)</div>
             </button>
 
             <button class="preset-btn" data-cid="CUST-1001">
@@ -48,7 +48,7 @@
                 <span class="c-name">Sarah Jenkins</span>
                 <span class="badge badge-clean">Clean</span>
               </div>
-              <div class="btn-sub">CUST-1001 • Routine Activity (0 rules)</div>
+              <div class="btn-sub">CUST-1001 • Routine Activity (UPI / Rent)</div>
             </button>
 
             <button class="preset-btn" data-cid="CUST-1003">
@@ -56,11 +56,68 @@
                 <span class="c-name">Elena Rostova</span>
                 <span class="badge badge-borderline">Borderline</span>
               </div>
-              <div class="btn-sub">CUST-1003 • Low Confidence / Restraint</div>
+              <div class="btn-sub">CUST-1003 • Ambiguous Insurance Premium</div>
             </button>
           </div>
 
-          <div class="divider"><span>OR UPLOAD CUSTOM</span></div>
+          <div class="divider"><span>OR ENTER REAL-TIME DATA</span></div>
+
+          <!-- Real-Time Interactive Transaction Form -->
+          <div class="form-card">
+            <h3>⚡ Add Live Transaction (INR ₹)</h3>
+            <form id="add-txn-form">
+              <div class="form-group">
+                <label>Date & Time</label>
+                <input type="datetime-local" id="txn-time" required>
+              </div>
+
+              <div class="form-group">
+                <label>Payee Name</label>
+                <input type="text" id="txn-payee" placeholder="e.g. CryptoVault India / Sharma Realty" required>
+              </div>
+
+              <div class="form-group">
+                <label>Description</label>
+                <input type="text" id="txn-desc" placeholder="e.g. Urgent Token Purchase" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Amount (INR ₹)</label>
+                  <input type="number" id="txn-amount" step="0.01" min="1" placeholder="e.g. 250000" required>
+                </div>
+                <div class="form-group">
+                  <label>Channel</label>
+                  <select id="txn-channel">
+                    <option value="UPI">UPI</option>
+                    <option value="IMPS">IMPS</option>
+                    <option value="NEFT">NEFT</option>
+                    <option value="RTGS">RTGS</option>
+                    <option value="Wire Transfer">Wire Transfer</option>
+                    <option value="Debit Card">Debit Card</option>
+                    <option value="Net Banking">Net Banking</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Category</label>
+                <select id="txn-category">
+                  <option value="Transfer">Transfer</option>
+                  <option value="Crypto/Investments">Crypto/Investments</option>
+                  <option value="Housing">Housing</option>
+                  <option value="Shopping">Shopping</option>
+                  <option value="Groceries">Groceries</option>
+                  <option value="Dining">Dining</option>
+                  <option value="Income">Income</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn-primary-small">➕ Add Transaction & Analyze</button>
+            </form>
+          </div>
+
+          <div class="divider"><span>OR UPLOAD CUSTOM JSON</span></div>
 
           <div class="upload-dropzone" id="dropzone">
             <input type="file" id="file-input" accept=".json" hidden>
@@ -127,7 +184,7 @@
             <!-- Customer Baseline Stats Card -->
             <div class="grid-card">
               <div class="card-header">
-                <h3>Customer Baseline Profile</h3>
+                <h3>Customer Baseline Profile (INR ₹)</h3>
                 <span class="baseline-tag">Historical Metrics</span>
               </div>
               <div class="stats-grid" id="baseline-stats-container">
@@ -171,7 +228,7 @@
                     <th>Description</th>
                     <th>Payee</th>
                     <th>Channel</th>
-                    <th class="text-right">Amount</th>
+                    <th class="text-right">Amount (₹)</th>
                     <th>Risk Status</th>
                   </tr>
                 </thead>

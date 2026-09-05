@@ -1,6 +1,7 @@
 """
 Deterministic Risk Rule Engine for Transaction Risk Investigation Assistant (NexusTiq24 PS06).
 Pure Python module — contains NO LLM calls or external network dependencies.
+Supports Indian Rupees (₹ / INR) currency statistics and threshold evaluations.
 """
 
 from datetime import datetime, timedelta
@@ -33,7 +34,8 @@ class RiskRuleEngine:
             return float(amt) if amt > 0 else 0.0
         if isinstance(amt, str):
             try:
-                val = float(amt.replace("$", "").replace(",", ""))
+                clean_str = amt.replace("₹", "").replace("INR", "").replace("$", "").replace(",", "").strip()
+                val = float(clean_str)
                 return val if val > 0 else 0.0
             except ValueError:
                 return 0.0
@@ -48,7 +50,8 @@ class RiskRuleEngine:
                 "p90_amount": 0.0,
                 "max_amount": 0.0,
                 "known_payees_count": 0,
-                "established_channels": []
+                "established_channels": [],
+                "currency": "INR"
             }
 
         # Exclude income/deposits for spending statistics
@@ -82,7 +85,8 @@ class RiskRuleEngine:
             "p90_amount": round(p90_val, 2),
             "max_amount": round(max_val, 2),
             "known_payees_count": len(payees),
-            "established_channels": channels
+            "established_channels": channels,
+            "currency": "INR"
         }
 
     def evaluate_rules(self) -> Dict[str, Any]:
@@ -101,10 +105,6 @@ class RiskRuleEngine:
         flagged_tx_ids = set()
         stats = self.compute_summary_stats()
 
-        # Split history into baseline (first 75%) and evaluation window (last 25%) if history > 10 txns
-        # Otherwise compute baseline across full history excluding individual outlier checks
-        tx_count = len(self.transactions)
-        
         # Rule 1: Unusually Large Transfer
         rule_large = self._check_unusually_large_transfer(stats)
         if rule_large:
@@ -166,13 +166,9 @@ class RiskRuleEngine:
         }
 
     def _check_unusually_large_transfer(self, stats: Dict[str, Any]) -> Dict[str, Any]:
-        p90 = stats.get("p90_amount", 0.0)
-        avg = stats.get("avg_amount", 0.0)
-
-        # Find historical baseline excluding the top 10% highest transactions to avoid baseline pollution
         outgoing_amounts = [
-            t.get("amount", 0.0) for t in self.transactions
-            if t.get("category") != "Income" and isinstance(t.get("amount"), (int, float))
+            self._parse_amount(t.get("amount")) for t in self.transactions
+            if t.get("category") != "Income" and self._parse_amount(t.get("amount")) > 0
         ]
         
         if len(outgoing_amounts) < 4:
@@ -192,13 +188,11 @@ class RiskRuleEngine:
         for t in self.transactions:
             if t.get("category") == "Income":
                 continue
-            amt = t.get("amount", 0.0)
-            if not isinstance(amt, (int, float)):
-                continue
+            amt = self._parse_amount(t.get("amount"))
 
-            # Flag if transaction is > 3.0x baseline p90 AND > 2.5x baseline max AND > $1500
+            # Flag if transaction is > 3.0x baseline p90 AND > 2.5x baseline max AND >= ₹100,000
             ratio = amt / (baseline_p90 + 1e-5)
-            if amt > 2.5 * baseline_max and ratio >= 3.0 and amt >= 1500.0:
+            if amt > 2.5 * baseline_max and ratio >= 3.0 and amt >= 100000.0:
                 flagged_txs.append(t)
                 if ratio > max_ratio:
                     max_ratio = ratio
@@ -207,13 +201,13 @@ class RiskRuleEngine:
             return None
 
         flagged_ids = [t["transaction_id"] for t in flagged_txs]
-        largest_amt = max(t["amount"] for t in flagged_txs)
+        largest_amt = max(self._parse_amount(t["amount"]) for t in flagged_txs)
 
         return {
             "rule_id": "RULE_LARGE_TRANSFER",
             "rule_name": "Unusually Large Transfer",
             "severity": "HIGH",
-            "description": f"Transfer of USD {largest_amt:,.2f} is {max_ratio:.1f}x higher than customer's baseline 90th percentile (USD {baseline_p90:,.2f}).",
+            "description": f"Transfer of ₹{largest_amt:,.2f} is {max_ratio:.1f}x higher than customer's baseline 90th percentile (₹{baseline_p90:,.2f}).",
             "flagged_transaction_ids": flagged_ids,
             "evidence": {
                 "flagged_amount": largest_amt,
@@ -224,7 +218,6 @@ class RiskRuleEngine:
         }
 
     def _check_payee_burst(self) -> Dict[str, Any]:
-        # Track first appearance of each payee
         payee_first_seen = {}
         payee_txs = {}
 
@@ -249,20 +242,18 @@ class RiskRuleEngine:
 
         for payee, tx_list in payee_txs.items():
             first_dt = payee_first_seen[payee]
-            # Check if payee was first seen within the last 14 days of history
             days_since_first = (latest_time - first_dt).total_seconds() / 86400.0
             is_new_payee = days_since_first <= 14.0 or len(tx_list) <= 3
 
-            # Check rolling windows for rapid burst to new/unfamiliar payee
             if is_new_payee and len(tx_list) >= 2:
                 for i in range(len(tx_list)):
                     for j in range(i + 1, len(tx_list)):
                         w_hours = (tx_list[j][0] - tx_list[i][0]).total_seconds() / 3600.0
                         burst_sub = tx_list[i:j+1]
-                        burst_sum = sum(t[1].get("amount", 0.0) for t in burst_sub)
+                        burst_sum = sum(self._parse_amount(t[1].get("amount")) for t in burst_sub)
                         
-                        # Trigger if 2+ transactions in 48 hours OR total sum > $2000 to new payee in 72 hours
-                        if w_hours <= 48.0 or (w_hours <= 72.0 and burst_sum >= 2000.0):
+                        # Trigger if 2+ transactions in 48 hours OR total sum >= ₹150,000 to new payee in 72 hours
+                        if w_hours <= 48.0 or (w_hours <= 72.0 and burst_sum >= 150000.0):
                             for _, t in burst_sub:
                                 flagged_txs.append(t)
                             burst_payee = payee
@@ -281,7 +272,7 @@ class RiskRuleEngine:
             "rule_id": "RULE_PAYEE_BURST",
             "rule_name": "Unfamiliar Payee Burst",
             "severity": "HIGH",
-            "description": f"Burst of {len(flagged_txs)} rapid payments totaling USD {burst_total:,.2f} sent to unfamiliar payee '{burst_payee}'.",
+            "description": f"Burst of {len(flagged_txs)} rapid payments totaling ₹{burst_total:,.2f} sent to unfamiliar payee '{burst_payee}'.",
             "flagged_transaction_ids": flagged_ids,
             "evidence": {
                 "payee": burst_payee,
@@ -294,12 +285,11 @@ class RiskRuleEngine:
         flagged_txs = []
         for t in self.transactions:
             dt = self._parse_iso(t.get("timestamp", ""))
-            # Odd hours defined as 01:00 AM to 04:59 AM (hours 1, 2, 3, 4)
+            # Odd hours: 01:00 AM to 04:59 AM (hours 1, 2, 3, 4)
             if dt.hour in [1, 2, 3, 4]:
                 amt = self._parse_amount(t.get("amount"))
                 chan = t.get("channel", "")
-                # Flag if amount is substantial (> 500) or high risk channel (Crypto, P2P, Wire)
-                if amt >= 500.0 or chan in ["Wire Transfer", "P2P Payment", "Crypto", "Crypto/Investments"]:
+                if amt >= 25000.0 or chan in ["Wire Transfer", "IMPS", "RTGS", "UPI", "Crypto", "P2P Payment"]:
                     flagged_txs.append(t)
 
         if not flagged_txs:
@@ -326,7 +316,7 @@ class RiskRuleEngine:
         flagged_txs = []
         reason = ""
 
-        # Check for rapid velocity burst: >= 3 transactions in 30 minutes
+        # Velocity burst: >= 3 transactions in 30 minutes totaling >= ₹100,000
         for i in range(len(self.transactions) - 2):
             t1 = self.transactions[i]
             t3 = self.transactions[i + 2]
@@ -334,17 +324,14 @@ class RiskRuleEngine:
             dt3 = self._parse_iso(t3.get("timestamp", ""))
             
             if (dt3 - dt1).total_seconds() <= 1800.0 and t1.get("category") != "Income":
-                # Check if total in burst is significant
                 burst_txs = self.transactions[i:i+3]
                 burst_sum = sum(self._parse_amount(t.get("amount")) for t in burst_txs)
-                if burst_sum >= 1500.0:
+                if burst_sum >= 100000.0:
                     flagged_txs.extend(burst_txs)
-                    reason = f"High velocity burst of 3 transactions within 30 minutes totaling USD {burst_sum:,.2f}"
+                    reason = f"High velocity burst of 3 transactions within 30 minutes totaling ₹{burst_sum:,.2f}"
                     break
 
         if not flagged_txs:
-            # Check for sudden uncharacteristic channel usage (e.g. Wire Transfer for customer with no wire history)
-            # Find channels used in first 80% of history
             n_hist = max(int(len(self.transactions) * 0.8), 5)
             historical_channels = set(t.get("channel") for t in self.transactions[:n_hist] if t.get("channel"))
             
@@ -352,15 +339,14 @@ class RiskRuleEngine:
             for t in recent_txs:
                 chan = t.get("channel")
                 amt = self._parse_amount(t.get("amount"))
-                if chan in ["Wire Transfer", "Crypto", "P2P Payment"] and chan not in historical_channels and amt >= 2000.0:
+                if chan in ["Wire Transfer", "Crypto", "IMPS", "RTGS"] and chan not in historical_channels and amt >= 150000.0:
                     flagged_txs.append(t)
-                    reason = f"Sudden use of high-risk channel '{chan}' for USD {amt:,.2f} with no historical precedent"
+                    reason = f"Sudden use of high-risk channel '{chan}' for ₹{amt:,.2f} with no historical precedent"
                     break
 
         if not flagged_txs:
             return None
 
-        # Deduplicate transaction IDs
         unique_flagged = []
         seen_ids = set()
         for t in flagged_txs:

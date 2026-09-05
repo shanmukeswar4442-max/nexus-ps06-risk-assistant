@@ -6,3 +6,5 @@ __pycache__/
 node_modules/
 .pytest_cache/
 .DS_Store
+dist/
+*.log
