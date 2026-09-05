@@ -213,7 +213,7 @@ class RiskRuleEngine:
             "rule_id": "RULE_LARGE_TRANSFER",
             "rule_name": "Unusually Large Transfer",
             "severity": "HIGH",
-            "description": f"Transfer of ${largest_amt:,.2f} is {max_ratio:.1f}x higher than customer's baseline 90th percentile (${baseline_p90:,.2f}).",
+            "description": f"Transfer of USD {largest_amt:,.2f} is {max_ratio:.1f}x higher than customer's baseline 90th percentile (USD {baseline_p90:,.2f}).",
             "flagged_transaction_ids": flagged_ids,
             "evidence": {
                 "flagged_amount": largest_amt,
@@ -281,7 +281,7 @@ class RiskRuleEngine:
             "rule_id": "RULE_PAYEE_BURST",
             "rule_name": "Unfamiliar Payee Burst",
             "severity": "HIGH",
-            "description": f"Burst of {len(flagged_txs)} rapid payments totaling ${burst_total:,.2f} sent to unfamiliar payee '{burst_payee}'.",
+            "description": f"Burst of {len(flagged_txs)} rapid payments totaling USD {burst_total:,.2f} sent to unfamiliar payee '{burst_payee}'.",
             "flagged_transaction_ids": flagged_ids,
             "evidence": {
                 "payee": burst_payee,
@@ -296,9 +296,9 @@ class RiskRuleEngine:
             dt = self._parse_iso(t.get("timestamp", ""))
             # Odd hours defined as 01:00 AM to 04:59 AM (hours 1, 2, 3, 4)
             if dt.hour in [1, 2, 3, 4]:
-                amt = t.get("amount", 0.0)
+                amt = self._parse_amount(t.get("amount"))
                 chan = t.get("channel", "")
-                # Flag if amount is substantial (> $500) or high risk channel (Crypto, P2P, Wire)
+                # Flag if amount is substantial (> 500) or high risk channel (Crypto, P2P, Wire)
                 if amt >= 500.0 or chan in ["Wire Transfer", "P2P Payment", "Crypto", "Crypto/Investments"]:
                     flagged_txs.append(t)
 
@@ -306,7 +306,7 @@ class RiskRuleEngine:
             return None
 
         flagged_ids = [t["transaction_id"] for t in flagged_txs]
-        total_odd_amt = sum(t.get("amount", 0.0) for t in flagged_txs)
+        total_odd_amt = sum(self._parse_amount(t.get("amount")) for t in flagged_txs)
         hours_list = [self._parse_iso(t.get("timestamp", "")).strftime("%H:%M") for t in flagged_txs]
 
         return {
@@ -336,10 +336,10 @@ class RiskRuleEngine:
             if (dt3 - dt1).total_seconds() <= 1800.0 and t1.get("category") != "Income":
                 # Check if total in burst is significant
                 burst_txs = self.transactions[i:i+3]
-                burst_sum = sum(t.get("amount", 0.0) for t in burst_txs)
+                burst_sum = sum(self._parse_amount(t.get("amount")) for t in burst_txs)
                 if burst_sum >= 1500.0:
                     flagged_txs.extend(burst_txs)
-                    reason = f"High velocity burst of 3 transactions within 30 minutes totaling ${burst_sum:,.2f}"
+                    reason = f"High velocity burst of 3 transactions within 30 minutes totaling USD {burst_sum:,.2f}"
                     break
 
         if not flagged_txs:
@@ -351,10 +351,10 @@ class RiskRuleEngine:
             recent_txs = self.transactions[n_hist:]
             for t in recent_txs:
                 chan = t.get("channel")
-                amt = t.get("amount", 0.0)
+                amt = self._parse_amount(t.get("amount"))
                 if chan in ["Wire Transfer", "Crypto", "P2P Payment"] and chan not in historical_channels and amt >= 2000.0:
                     flagged_txs.append(t)
-                    reason = f"Sudden use of high-risk channel '{chan}' for ${amt:,.2f} with no historical precedent"
+                    reason = f"Sudden use of high-risk channel '{chan}' for USD {amt:,.2f} with no historical precedent"
                     break
 
         if not flagged_txs:

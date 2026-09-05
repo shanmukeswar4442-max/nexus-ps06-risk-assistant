@@ -58,16 +58,16 @@ The repository includes three realistic multi-month transaction histories genera
 | Customer ID | Name | Risk Profile | Planted Signals / Behavior |
 | :--- | :--- | :--- | :--- |
 | **`CUST-1001`** | Sarah Jenkins | **Clean / Routine** | 98 routine transactions (salary, rent, groceries, coffee). **0 rules triggered** (`ATTENTION NEEDED: NO`). |
-| **`CUST-1002`** | Marcus Vance | **High Risk Anomalous** | Outgoing wire transfer of \$9,500.00 (6.8x historical 90th percentile `TXN-88219`), burst of rapid P2P payments to unfamiliar payee `CryptoVault Exchange` (`TXN-88220`, `TXN-88221`, `TXN-88222`), and odd-hours activity (03:14 AM - 04:05 AM). |
-| **`CUST-1003`** | Elena Rostova | **Borderline / Ambiguous** | Slightly elevated annual insurance renewal payment (\$1,450 vs \$180 regular shopping) executed at 00:45 AM. Demonstrates system restraint (Low Risk Score / `ATTENTION NEEDED: NO`). |
+| **`CUST-1002`** | Marcus Vance | **High Risk Anomalous** | Outgoing wire transfer of USD 9,500.00 (6.8x historical 90th percentile `TXN-88219`), burst of rapid P2P payments to unfamiliar payee `CryptoVault Exchange` (`TXN-88220`, `TXN-88221`, `TXN-88222`), and odd-hours activity (03:14 AM - 04:05 AM). |
+| **`CUST-1003`** | Elena Rostova | **Borderline / Ambiguous** | Slightly elevated annual insurance renewal payment (USD 1,450 vs USD 180 regular shopping) executed at 00:45 AM. Demonstrates system restraint (Low Risk Score / `ATTENTION NEEDED: NO`). |
 
 ---
 
 ## ⚙️ Deterministic Risk Rules (`src/rules/engine.py`)
 
 - **`RULE_LARGE_TRANSFER`**: Flags transfers > 3.0x customer's historical 90th percentile and > 2.5x baseline maximum.
-- **`RULE_PAYEE_BURST`**: Flags payees first seen within 14 days receiving ≥ 2 payments in 48 hours or total sum ≥ \$2,000.
-- **`RULE_ODD_HOURS`**: Flags high-value (≥ \$500) or high-risk channel transactions executed between 01:00 AM and 05:00 AM.
+- **`RULE_PAYEE_BURST`**: Flags payees first seen within 14 days receiving ≥ 2 payments in 48 hours or total sum ≥ USD 2,000.
+- **`RULE_ODD_HOURS`**: Flags high-value (≥ USD 500) or high-risk channel transactions executed between 01:00 AM and 05:00 AM.
 - **`RULE_PATTERN_BREAK`**: Flags velocity bursts (≥ 3 txns in 30 mins) or unprecedented high-risk channel usage (e.g. Wire Transfer).
 
 ---

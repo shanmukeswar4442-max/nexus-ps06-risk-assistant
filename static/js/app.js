@@ -182,11 +182,11 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
       <div class="stat-box">
         <span class="stat-lbl">HISTORICAL AVG</span>
-        <span class="stat-val">$${(stats.avg_amount || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+        <span class="stat-val">USD ${(stats.avg_amount || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
       </div>
       <div class="stat-box">
         <span class="stat-lbl">90TH PERCENTILE</span>
-        <span class="stat-val">$${(stats.p90_amount || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+        <span class="stat-val">USD ${(stats.p90_amount || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
       </div>
       <div class="stat-box">
         <span class="stat-lbl">KNOWN PAYEES</span>
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <td>${t.description || 'N/A'}</td>
           <td><strong>${t.payee || 'N/A'}</strong></td>
           <td><span style="font-size: 11px; background: var(--bg-tertiary); padding: 2px 6px; border-radius: 4px;">${t.channel || 'N/A'}</span></td>
-          <td class="text-right" style="font-family: var(--font-mono); font-weight: 600;">$${(t.amount || 0).toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+          <td class="text-right" style="font-family: var(--font-mono); font-weight: 600;">USD ${(t.amount || 0).toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
           <td>${isFlagged ? '<span class="badge badge-high">⚠️ Flagged</span>' : '<span style="color: var(--text-muted); font-size: 11px;">Normal</span>'}</td>
         </tr>
       `;

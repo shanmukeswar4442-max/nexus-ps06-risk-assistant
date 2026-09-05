@@ -33,8 +33,8 @@ def generate_template_fallback(findings: Dict[str, Any], raw_transactions: List[
         lines.append("After reviewing the customer's transaction history against deterministic risk rules, no suspicious patterns or severe anomalies were detected.")
         lines.append(f"- **Total Transactions Evaluated**: {stats.get('total_transactions', 0)}")
         lines.append(f"- **Overall Risk Score**: {risk_score}/100 ({confidence} Confidence)")
-        lines.append(f"- **Historical Average Amount**: ${stats.get('avg_amount', 0.0):,.2f}")
-        lines.append(f"- **90th Percentile Threshold**: ${stats.get('p90_amount', 0.0):,.2f}")
+        lines.append(f"- **Historical Average Amount**: USD {stats.get('avg_amount', 0.0):,.2f}")
+        lines.append(f"- **90th Percentile Threshold**: USD {stats.get('p90_amount', 0.0):,.2f}")
         lines.append("")
         lines.append("**Conclusion**: Routine banking activity consistent with established customer behavior. No further investigator action required.")
         return "\n".join(lines)
@@ -63,12 +63,12 @@ def generate_template_fallback(findings: Dict[str, Any], raw_transactions: List[
         for tid in rule_tx_ids:
             t = tx_lookup.get(tid)
             if t:
-                lines.append(f"  - `[{t.get('transaction_id')}]` | Date: {t.get('timestamp')} | Payee: **{t.get('payee')}** | Amount: **${t.get('amount', 0.0):,.2f}** | Channel: {t.get('channel')}")
+                lines.append(f"  - `[{t.get('transaction_id')}]` | Date: {t.get('timestamp')} | Payee: **{t.get('payee')}** | Amount: **USD {t.get('amount', 0.0):,.2f}** | Channel: {t.get('channel')}")
         lines.append("")
 
     lines.append("#### 2. Customer Baseline Comparison")
-    lines.append(f"- **Historical Average Transaction**: ${stats.get('avg_amount', 0.0):,.2f}")
-    lines.append(f"- **Historical 90th Percentile**: ${stats.get('p90_amount', 0.0):,.2f}")
+    lines.append(f"- **Historical Average Transaction**: USD {stats.get('avg_amount', 0.0):,.2f}")
+    lines.append(f"- **Historical 90th Percentile**: USD {stats.get('p90_amount', 0.0):,.2f}")
     lines.append(f"- **Established Payees Count**: {stats.get('known_payees_count', 0)}")
     lines.append(f"- **Established Channels**: {', '.join(stats.get('established_channels', []))}")
     lines.append("")
