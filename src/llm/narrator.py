@@ -1,45 +1,49 @@
 """
-Gemini LLM Narrative Synthesis Layer for Transaction Risk Investigation Assistant (NexusTiq24 PS06).
-Translates deterministic risk findings into a grounded human-readable investigation report.
-Strictly grounded — never invents transaction IDs or findings, never declares fraud.
-Wraps all LLM calls in try/except with a robust template fallback.
+Gemini LLM Narrative Synthesis Layer (NexusTiq24 PS06).
+Features:
+- Runtime API key resolution: Environment variable 'GEMINI_API_KEY' first, request-supplied session key override if provided.
+- Exponential retries & timeout handling.
+- Deterministic template fallback if API key is missing, call fails, or times out.
+- Strictly grounded narrative synthesis: line 1 headline 'ATTENTION NEEDED: YES/NO', real transaction IDs only, zero fraud declarations.
 """
 
-import os
 import json
+import time
 from typing import Any, Dict, List, Optional
 
+from src.core.config import settings
+from src.core.logging_config import logger, mask_sensitive
+from src.core.models import RiskAnalysisResult, Transaction
 
-def generate_template_fallback(findings: Dict[str, Any], raw_transactions: List[Dict[str, Any]]) -> str:
+
+def generate_template_fallback(result: RiskAnalysisResult, raw_transactions: List[Dict[str, Any]]) -> str:
     """
-    Deterministic fallback reporter used if Gemini API key is missing, call fails, or times out.
+    Deterministic fallback reporter used if Gemini API is missing, offline, or times out.
     Guarantees 100% reliable system operation without hallucination.
     """
-    customer_id = findings.get("customer_id", "UNKNOWN")
-    attention_needed = findings.get("attention_needed", False)
-    confidence = findings.get("confidence_level", "NONE")
-    risk_score = findings.get("overall_risk_score", 0)
-    stats = findings.get("summary_stats", {})
-    triggered = findings.get("triggered_rules", [])
-    flagged_ids = findings.get("flagged_transaction_ids", [])
+    customer_id = result.customer_id
+    attention_needed = result.attention_needed
+    confidence = result.confidence_level
+    risk_score = result.overall_risk_score
+    stats = result.summary_stats
+    triggered = result.triggered_rules
+    flagged_ids = result.flagged_transaction_ids
 
     lines = []
     
-    # REQUIREMENT 1: FIRST finding MUST be plain statement whether attention is needed at all
     if not attention_needed:
         lines.append("ATTENTION NEEDED: NO")
         lines.append("")
         lines.append(f"### Investigation Summary for Customer {customer_id}")
         lines.append("After reviewing the customer's transaction history against deterministic risk rules, no suspicious patterns or severe anomalies were detected.")
-        lines.append(f"- **Total Transactions Evaluated**: {stats.get('total_transactions', 0)}")
+        lines.append(f"- **Total Transactions Evaluated**: {stats.total_transactions}")
         lines.append(f"- **Overall Risk Score**: {risk_score}/100 ({confidence} Confidence)")
-        lines.append(f"- **Historical Average Amount**: ₹{stats.get('avg_amount', 0.0):,.2f}")
-        lines.append(f"- **90th Percentile Threshold**: ₹{stats.get('p90_amount', 0.0):,.2f}")
+        lines.append(f"- **Historical Average Amount**: ₹{stats.avg_amount:,.2f}")
+        lines.append(f"- **90th Percentile Threshold**: ₹{stats.p90_amount:,.2f}")
         lines.append("")
         lines.append("**Conclusion**: Routine banking activity consistent with established customer behavior. No further investigator action required.")
         return "\n".join(lines)
 
-    # ATTENTION NEEDED: YES
     lines.append("ATTENTION NEEDED: YES")
     lines.append("")
     lines.append(f"### Investigation Findings for Customer {customer_id}")
@@ -50,27 +54,21 @@ def generate_template_fallback(findings: Dict[str, Any], raw_transactions: List[
     tx_lookup = {t.get("transaction_id"): t for t in raw_transactions if isinstance(t, dict) and t.get("transaction_id")}
 
     for i, rule in enumerate(triggered, 1):
-        rule_name = rule.get("rule_name", "Unknown Rule")
-        severity = rule.get("severity", "MEDIUM")
-        desc = rule.get("description", "")
-        rule_tx_ids = rule.get("flagged_transaction_ids", [])
+        lines.append(f"**[{rule.severity}] {rule.rule_name}**")
+        lines.append(f"- *Deviation Detail*: {rule.description}")
+        lines.append(f"- *Cited Transaction IDs*: {', '.join(rule.flagged_transaction_ids) if rule.flagged_transaction_ids else 'None'}")
         
-        lines.append(f"**[{severity}] {rule_name}**")
-        lines.append(f"- *Deviation Detail*: {desc}")
-        lines.append(f"- *Cited Transaction IDs*: {', '.join(rule_tx_ids) if rule_tx_ids else 'None'}")
-        
-        # Details of cited transactions
-        for tid in rule_tx_ids:
+        for tid in rule.flagged_transaction_ids:
             t = tx_lookup.get(tid)
             if t:
-                lines.append(f"  - `[{t.get('transaction_id')}]` | Date: {t.get('timestamp')} | Payee: **{t.get('payee')}** | Amount: **₹{t.get('amount', 0.0):,.2f}** | Channel: {t.get('channel')}")
+                lines.append(f"  - `[{t.get('transaction_id')}]` | Date: {t.get('timestamp')} | Payee: **{t.get('payee')}** | Amount: **₹{float(t.get('amount', 0.0)):,.2f}** | Channel: {t.get('channel')}")
         lines.append("")
 
     lines.append("#### 2. Customer Baseline Comparison")
-    lines.append(f"- **Historical Average Transaction**: ₹{stats.get('avg_amount', 0.0):,.2f}")
-    lines.append(f"- **Historical 90th Percentile**: ₹{stats.get('p90_amount', 0.0):,.2f}")
-    lines.append(f"- **Established Payees Count**: {stats.get('known_payees_count', 0)}")
-    lines.append(f"- **Established Channels**: {', '.join(stats.get('established_channels', []))}")
+    lines.append(f"- **Historical Average Transaction**: ₹{stats.avg_amount:,.2f}")
+    lines.append(f"- **Historical 90th Percentile**: ₹{stats.p90_amount:,.2f}")
+    lines.append(f"- **Established Payees Count**: {stats.known_payees_count}")
+    lines.append(f"- **Established Channels**: {', '.join(stats.established_channels)}")
     lines.append("")
 
     lines.append("#### 3. Recommended Investigator Next Steps")
@@ -83,29 +81,31 @@ def generate_template_fallback(findings: Dict[str, Any], raw_transactions: List[
     return "\n".join(lines)
 
 
-def generate_investigation_report(findings: Dict[str, Any], raw_transactions: List[Dict[str, Any]]) -> Dict[str, Any]:
+def generate_investigation_report(
+    result: RiskAnalysisResult,
+    raw_transactions: List[Dict[str, Any]],
+    api_key_override: Optional[str] = None
+) -> RiskAnalysisResult:
     """
-    Generates human-readable investigation narrative using Gemini API (google-genai SDK).
-    Falls back gracefully to template reporter if API key is missing or call fails.
+    Generates human-readable narrative report using Gemini API with retry logic and fallback.
+    Runtime key resolution order:
+    1. api_key_override (if provided by user in Settings)
+    2. GEMINI_API_KEY environment variable / config
     """
-    api_key = os.environ.get("GEMINI_API_KEY")
+    effective_api_key = api_key_override or settings.DEFAULT_GEMINI_API_KEY
     
-    # If API key is missing or empty string, fallback immediately
-    if not api_key:
-        report_text = generate_template_fallback(findings, raw_transactions)
-        return {
-            "narrative_report": report_text,
-            "source": "deterministic_fallback",
-            "findings": findings
-        }
+    if not effective_api_key:
+        logger.info(f"No Gemini API key available for customer {result.customer_id}. Using deterministic template fallback.")
+        result.narrative_report = generate_template_fallback(result, raw_transactions)
+        result.report_source = "deterministic_fallback"
+        return result
 
-    # Attempt Gemini API synthesis
-    try:
-        from google import genai
+    logger.info(f"Attempting Gemini narrative synthesis for customer {result.customer_id} (API key source: {'override' if api_key_override else 'env'}).")
 
-        client = genai.Client(api_key=api_key)
-        
-        prompt = f"""
+    findings_json = result.model_dump()
+    flagged_txs = [t for t in raw_transactions if isinstance(t, dict) and t.get("transaction_id") in result.flagged_transaction_ids]
+
+    prompt = f"""
 You are an expert Banking Risk Investigation Assistant.
 Your job is to generate a concise, grounded human-readable investigation report based STRICTLY on the deterministic rule findings provided below.
 
@@ -122,40 +122,50 @@ CRITICAL CONSTRAINTS (STRICTLY ENFORCED):
 5. DO NOT add any finding, transaction, or claim that is not present in the input JSON below.
 
 DETERMINISTIC FINDINGS JSON:
-{json.dumps(findings, indent=2)}
+{json.dumps(findings_json, indent=2)}
 
 RAW TRANSACTIONS CONTEXT (ONLY FOR CITED IDS):
-{json.dumps([t for t in raw_transactions if t.get("transaction_id") in findings.get("flagged_transaction_ids", [])], indent=2)}
+{json.dumps(flagged_txs, indent=2)}
 
 Produce your investigation report now in clean Markdown.
 """
-        
-        # Try calling Gemini models (gemini-2.5-flash or gemini-1.5-flash)
-        model_name = "gemini-2.5-flash"
-        response = client.models.generate_content(
-            model=model_name,
-            contents=prompt
-        )
-        
-        report_text = response.text.strip() if response and response.text else ""
-        
-        # Enforce requirement 1 check: text must start with ATTENTION NEEDED
+
+    # Retries with backoff
+    attempts = 0
+    max_attempts = settings.LLM_MAX_RETRIES
+    report_text = ""
+    last_error = None
+
+    while attempts < max_attempts:
+        attempts += 1
+        try:
+            from google import genai
+            client = genai.Client(api_key=effective_api_key)
+            
+            response = client.models.generate_content(
+                model=settings.GEMINI_MODEL,
+                contents=prompt
+            )
+            if response and response.text:
+                report_text = response.text.strip()
+                break
+        except Exception as e:
+            last_error = e
+            logger.warning(f"Gemini API attempt {attempts}/{max_attempts} failed for customer {result.customer_id}: {e}")
+            time.sleep(0.5 * (2 ** (attempts - 1)))
+
+    if report_text:
         if not report_text.startswith("ATTENTION NEEDED:"):
-            prefix = "ATTENTION NEEDED: YES\n\n" if findings.get("attention_needed") else "ATTENTION NEEDED: NO\n\n"
+            prefix = "ATTENTION NEEDED: YES\n\n" if result.attention_needed else "ATTENTION NEEDED: NO\n\n"
             report_text = prefix + report_text
+            
+        result.narrative_report = report_text
+        result.report_source = "gemini_llm"
+        return result
 
-        return {
-            "narrative_report": report_text,
-            "source": "gemini_llm",
-            "findings": findings
-        }
-
-    except Exception as e:
-        # Graceful fallback on any exception, timeout, or error
-        fallback_text = generate_template_fallback(findings, raw_transactions)
-        return {
-            "narrative_report": fallback_text,
-            "source": "deterministic_fallback",
-            "fallback_reason": str(e),
-            "findings": findings
-        }
+    # Fallback on failure
+    logger.error(f"Gemini API calls failed for customer {result.customer_id} after {max_attempts} attempts. Falling back to template. Error: {last_error}")
+    result.narrative_report = generate_template_fallback(result, raw_transactions)
+    result.report_source = "deterministic_fallback"
+    result.fallback_reason = str(last_error) if last_error else "API call failed"
+    return result

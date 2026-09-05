@@ -1,3 +1,3 @@
-from .narrator import generate_investigation_report
+from .narrator import generate_investigation_report, generate_template_fallback
 
-__all__ = ["generate_investigation_report"]
+__all__ = ["generate_investigation_report", "generate_template_fallback"]
