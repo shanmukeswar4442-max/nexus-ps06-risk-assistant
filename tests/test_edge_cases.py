@@ -11,20 +11,15 @@ Tests cover:
 import io
 import json
 from pathlib import Path
-from fastapi.testclient import TestClient
+from starlette.testclient import TestClient
 import pytest
 
 from app import app
 from src.rules.engine import evaluate_customer_risk
 from src.llm.narrator import generate_investigation_report, generate_template_fallback
 
+client = TestClient(app)
 DATA_DIR = Path(__file__).parent.parent / "data"
-
-
-@pytest.fixture
-def client():
-    with TestClient(app) as c:
-        yield c
 
 
 def test_malformed_string_amounts_and_missing_fields():
@@ -52,13 +47,13 @@ def test_invalid_timestamps():
     assert result.customer_id == "CUST-BAD-TIME"
 
 
-def test_upload_malformed_csv(client):
+def test_upload_malformed_csv():
     bad_csv = "invalid,header\nfoo,bar\n"
     response = client.post("/api/upload", files={"file": ("test.csv", io.BytesIO(bad_csv.encode()), "text/csv")})
     assert response.status_code in [400, 422, 200]
 
 
-def test_upload_empty_file(client):
+def test_upload_empty_file():
     empty_file = ""
     response = client.post("/api/upload", files={"file": ("test.csv", io.BytesIO(empty_file.encode()), "text/csv")})
     assert response.status_code in [400, 422]
