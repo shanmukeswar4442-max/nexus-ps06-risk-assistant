@@ -18,13 +18,26 @@ class RiskRuleEngine:
             key=lambda x: self._parse_iso(x.get("timestamp", ""))
         )
 
-    def _parse_iso(self, ts_str: str) -> datetime:
-        if not ts_str:
+    def _parse_iso(self, ts_str: Any) -> datetime:
+        if not isinstance(ts_str, str) or not ts_str:
             return datetime.min
         try:
             return datetime.fromisoformat(ts_str.replace("Z", "+00:00"))
         except Exception:
             return datetime.min
+
+    def _parse_amount(self, amt: Any) -> float:
+        if amt is None:
+            return 0.0
+        if isinstance(amt, (int, float)):
+            return float(amt) if amt > 0 else 0.0
+        if isinstance(amt, str):
+            try:
+                val = float(amt.replace("$", "").replace(",", ""))
+                return val if val > 0 else 0.0
+            except ValueError:
+                return 0.0
+        return 0.0
 
     def compute_summary_stats(self) -> Dict[str, Any]:
         if not self.transactions:
@@ -40,12 +53,12 @@ class RiskRuleEngine:
 
         # Exclude income/deposits for spending statistics
         outgoing = [
-            t.get("amount", 0.0) for t in self.transactions
-            if t.get("category") != "Income" and isinstance(t.get("amount"), (int, float)) and t.get("amount", 0.0) > 0
+            self._parse_amount(t.get("amount")) for t in self.transactions
+            if t.get("category") != "Income" and self._parse_amount(t.get("amount")) > 0
         ]
         
         if not outgoing:
-            outgoing = [t.get("amount", 0.0) for t in self.transactions if isinstance(t.get("amount"), (int, float))]
+            outgoing = [self._parse_amount(t.get("amount")) for t in self.transactions if self._parse_amount(t.get("amount")) > 0]
 
         amounts_sorted = sorted(outgoing) if outgoing else [0.0]
         n = len(amounts_sorted)

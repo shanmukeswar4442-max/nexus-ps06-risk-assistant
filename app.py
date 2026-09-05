@@ -11,18 +11,18 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Register API routes
-app.include_router(api_router)
-
-# Mount static frontend directory if present
-static_dir = Path(__file__).parent / "static"
-if static_dir.exists():
-    app.mount("/", StaticFiles(directory=str(static_dir), html=True), name="static")
-
-
+# 1. Health check & status endpoints
 @app.get("/ping")
 def ping():
     return {"status": "pong", "track_id": "PS06"}
+
+# 2. Register API router (/api/...)
+app.include_router(api_router)
+
+# 3. Mount static frontend directory AFTER all API routes
+static_dir = Path(__file__).parent / "static"
+if static_dir.exists():
+    app.mount("/", StaticFiles(directory=str(static_dir), html=True), name="static")
 
 
 if __name__ == "__main__":
