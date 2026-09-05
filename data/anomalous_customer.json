@@ -4,7 +4,7 @@
   "account_type": "Privilege Savings Account",
   "currency": "INR",
   "risk_profile": "High Risk / Multiple Anomalies",
-  "total_count": 19,
+  "total_count": 25,
   "transactions": [
     {
       "transaction_id": "TXN-ANO-2001",
@@ -31,27 +31,16 @@
     {
       "transaction_id": "TXN-ANO-2003",
       "customer_id": "CUST-1002",
-      "timestamp": "2026-05-06T18:30:00",
+      "timestamp": "2026-05-13T18:30:00",
       "description": "Grocery Superstore",
       "payee": "Nature Basket Market",
-      "amount": 2844.42,
+      "amount": 4086.93,
       "channel": "UPI",
       "category": "Groceries",
       "status": "Completed"
     },
     {
       "transaction_id": "TXN-ANO-2004",
-      "customer_id": "CUST-1002",
-      "timestamp": "2026-05-13T18:30:00",
-      "description": "Grocery Superstore",
-      "payee": "Nature Basket Market",
-      "amount": 2499.17,
-      "channel": "UPI",
-      "category": "Groceries",
-      "status": "Completed"
-    },
-    {
-      "transaction_id": "TXN-ANO-2005",
       "customer_id": "CUST-1002",
       "timestamp": "2026-05-15T09:00:00",
       "description": "Executive Salary Direct Credit",
@@ -62,7 +51,29 @@
       "status": "Completed"
     },
     {
+      "transaction_id": "TXN-ANO-2005",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-05-20T18:30:00",
+      "description": "Grocery Superstore",
+      "payee": "Nature Basket Market",
+      "amount": 2814.79,
+      "channel": "UPI",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
       "transaction_id": "TXN-ANO-2006",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-05-27T18:30:00",
+      "description": "Grocery Superstore",
+      "payee": "Nature Basket Market",
+      "amount": 2489.11,
+      "channel": "UPI",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2007",
       "customer_id": "CUST-1002",
       "timestamp": "2026-06-01T09:00:00",
       "description": "Executive Salary Direct Credit",
@@ -73,7 +84,7 @@
       "status": "Completed"
     },
     {
-      "transaction_id": "TXN-ANO-2007",
+      "transaction_id": "TXN-ANO-2008",
       "customer_id": "CUST-1002",
       "timestamp": "2026-06-02T10:15:00",
       "description": "Apartment Maintenance & Rent",
@@ -84,7 +95,29 @@
       "status": "Completed"
     },
     {
-      "transaction_id": "TXN-ANO-2008",
+      "transaction_id": "TXN-ANO-2009",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-06-03T18:30:00",
+      "description": "Grocery Superstore",
+      "payee": "Nature Basket Market",
+      "amount": 3815.67,
+      "channel": "UPI",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2010",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-06-10T18:30:00",
+      "description": "Grocery Superstore",
+      "payee": "Nature Basket Market",
+      "amount": 4118.32,
+      "channel": "UPI",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2011",
       "customer_id": "CUST-1002",
       "timestamp": "2026-06-15T09:00:00",
       "description": "Executive Salary Direct Credit",
@@ -95,29 +128,29 @@
       "status": "Completed"
     },
     {
-      "transaction_id": "TXN-ANO-2009",
+      "transaction_id": "TXN-ANO-2012",
       "customer_id": "CUST-1002",
       "timestamp": "2026-06-17T18:30:00",
       "description": "Grocery Superstore",
       "payee": "Nature Basket Market",
-      "amount": 3341.3,
+      "amount": 3990.8,
       "channel": "UPI",
       "category": "Groceries",
       "status": "Completed"
     },
     {
-      "transaction_id": "TXN-ANO-2010",
+      "transaction_id": "TXN-ANO-2013",
       "customer_id": "CUST-1002",
       "timestamp": "2026-06-24T18:30:00",
       "description": "Grocery Superstore",
       "payee": "Nature Basket Market",
-      "amount": 3481.93,
+      "amount": 4410.26,
       "channel": "UPI",
       "category": "Groceries",
       "status": "Completed"
     },
     {
-      "transaction_id": "TXN-ANO-2011",
+      "transaction_id": "TXN-ANO-2014",
       "customer_id": "CUST-1002",
       "timestamp": "2026-07-01T09:00:00",
       "description": "Executive Salary Direct Credit",
@@ -128,7 +161,18 @@
       "status": "Completed"
     },
     {
-      "transaction_id": "TXN-ANO-2012",
+      "transaction_id": "TXN-ANO-2015",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-07-01T18:30:00",
+      "description": "Grocery Superstore",
+      "payee": "Nature Basket Market",
+      "amount": 2783.6,
+      "channel": "UPI",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2016",
       "customer_id": "CUST-1002",
       "timestamp": "2026-07-02T10:15:00",
       "description": "Apartment Maintenance & Rent",
@@ -139,7 +183,18 @@
       "status": "Completed"
     },
     {
-      "transaction_id": "TXN-ANO-2013",
+      "transaction_id": "TXN-ANO-2017",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-07-08T18:30:00",
+      "description": "Grocery Superstore",
+      "payee": "Nature Basket Market",
+      "amount": 2304.72,
+      "channel": "UPI",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2018",
       "customer_id": "CUST-1002",
       "timestamp": "2026-07-15T09:00:00",
       "description": "Executive Salary Direct Credit",
@@ -150,23 +205,34 @@
       "status": "Completed"
     },
     {
-      "transaction_id": "TXN-ANO-2014",
+      "transaction_id": "TXN-ANO-2019",
       "customer_id": "CUST-1002",
-      "timestamp": "2026-07-22T18:30:00",
+      "timestamp": "2026-07-15T18:30:00",
       "description": "Grocery Superstore",
       "payee": "Nature Basket Market",
-      "amount": 3034.9,
+      "amount": 2376.87,
       "channel": "UPI",
       "category": "Groceries",
       "status": "Completed"
     },
     {
-      "transaction_id": "TXN-ANO-2015",
+      "transaction_id": "TXN-ANO-2020",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-07-22T18:30:00",
+      "description": "Grocery Superstore",
+      "payee": "Nature Basket Market",
+      "amount": 2757.86,
+      "channel": "UPI",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2021",
       "customer_id": "CUST-1002",
       "timestamp": "2026-07-29T18:30:00",
       "description": "Grocery Superstore",
       "payee": "Nature Basket Market",
-      "amount": 2368.0,
+      "amount": 3855.23,
       "channel": "UPI",
       "category": "Groceries",
       "status": "Completed"

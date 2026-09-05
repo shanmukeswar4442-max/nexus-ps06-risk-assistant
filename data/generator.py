@@ -1,11 +1,12 @@
 """
-Synthetic Data Generator for Transaction Risk Investigation Assistant (NexusTiq24 PS06) — INR (Indian Rupees) Edition.
-Generates multi-month transaction histories in Indian Rupees (₹) for three customer profiles:
-1. Clean Customer (Routine activity in INR, 0 rules triggered)
-2. Anomalous Customer (Planted anomalies in INR: large transfer, unfamiliar payee burst, odd hours)
+Synthetic Data Generator for Transaction Risk Investigation Assistant (NexusTiq24 PS06).
+Generates multi-month transaction histories in both JSON and CSV formats for three profiles:
+1. Clean Customer (Routine activity, 0 rules triggered)
+2. Anomalous Customer (Planted anomalies: large transfer, unfamiliar payee burst, odd hours)
 3. Borderline Customer (Ambiguous/weak signals demonstrating system restraint)
 """
 
+import csv
 import json
 import random
 from datetime import datetime, timedelta
@@ -17,11 +18,9 @@ def generate_clean_customer():
     txns = []
     txn_counter = 1000
 
-    # Generate 120 days of routine activity in Indian Rupees (₹)
     for day in range(120):
         current_day = base_date + timedelta(days=day)
         
-        # Monthly salary on day 1 and 15
         if current_day.day == 1 or current_day.day == 15:
             txn_counter += 1
             txns.append({
@@ -36,7 +35,6 @@ def generate_clean_customer():
                 "status": "Completed"
             })
 
-        # Rent on 1st of month
         if current_day.day == 1:
             txn_counter += 1
             txns.append({
@@ -51,7 +49,6 @@ def generate_clean_customer():
                 "status": "Completed"
             })
 
-        # Daily coffee / snacks via UPI
         if current_day.weekday() < 5 and random.random() < 0.8:
             txn_counter += 1
             txns.append({
@@ -66,7 +63,6 @@ def generate_clean_customer():
                 "status": "Completed"
             })
 
-        # Groceries weekly (Saturdays)
         if current_day.weekday() == 5:
             txn_counter += 1
             txns.append({
@@ -97,11 +93,9 @@ def generate_anomalous_customer():
     txns = []
     txn_counter = 2000
 
-    # 90 days of normal baseline activity in INR
     for day in range(90):
         current_day = base_date + timedelta(days=day)
         
-        # Salary
         if current_day.day in [1, 15]:
             txn_counter += 1
             txns.append({
@@ -116,7 +110,6 @@ def generate_anomalous_customer():
                 "status": "Completed"
             })
 
-        # Routine expenses (Rent, Utilities, Groceries)
         if current_day.day == 2:
             txn_counter += 1
             txns.append({
@@ -145,10 +138,9 @@ def generate_anomalous_customer():
                 "status": "Completed"
             })
 
-    # Planted Anomalies near the end (Day 91 & 92)
     anomaly_date = base_date + timedelta(days=91)
 
-    # Anomaly 1: Unusually large transfer relative to history (baseline max normal spending was ₹42,000, 90th percentile ~₹15,000)
+    # Anomaly 1: Unusually large transfer
     txns.append({
         "transaction_id": "TXN-88219",
         "customer_id": "CUST-1002",
@@ -161,7 +153,7 @@ def generate_anomalous_customer():
         "status": "Completed"
     })
 
-    # Anomaly 2 & 3: Payee burst to new unfamiliar payee + Odd-hours activity (03:14 AM and 03:42 AM)
+    # Anomaly 2 & 3: Payee burst to new unfamiliar payee + Odd-hours activity
     txns.append({
         "transaction_id": "TXN-88220",
         "customer_id": "CUST-1002",
@@ -214,7 +206,6 @@ def generate_borderline_customer():
     txns = []
     txn_counter = 3000
 
-    # 90 days of normal activity in INR
     for day in range(90):
         current_day = base_date + timedelta(days=day)
         
@@ -246,7 +237,6 @@ def generate_borderline_customer():
                 "status": "Completed"
             })
 
-    # Borderline activity: Slightly elevated annual premium payment (₹45,000 vs routine ₹6,500) at 00:45 AM
     borderline_date = base_date + timedelta(days=88)
     txns.append({
         "transaction_id": "TXN-BOR-9901",
@@ -271,6 +261,17 @@ def generate_borderline_customer():
     }
 
 
+def write_csv(filepath: Path, transactions: list):
+    if not transactions:
+        return
+    fieldnames = ["transaction_id", "customer_id", "timestamp", "description", "payee", "amount", "channel", "category", "status"]
+    with open(filepath, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for t in transactions:
+            writer.writerow({k: t.get(k, "") for k in fieldnames})
+
+
 def main():
     data_dir = Path(__file__).parent
     data_dir.mkdir(exist_ok=True)
@@ -279,6 +280,7 @@ def main():
     anomalous = generate_anomalous_customer()
     borderline = generate_borderline_customer()
 
+    # JSON output
     with open(data_dir / "clean_customer.json", "w", encoding="utf-8") as f:
         json.dump(clean, f, indent=2)
 
@@ -297,7 +299,12 @@ def main():
     with open(data_dir / "all_customers.json", "w", encoding="utf-8") as f:
         json.dump(all_customers, f, indent=2)
 
-    print("Synthetic INR datasets generated successfully in data/")
+    # CSV output
+    write_csv(data_dir / "clean_customer.csv", clean["transactions"])
+    write_csv(data_dir / "anomalous_customer.csv", anomalous["transactions"])
+    write_csv(data_dir / "borderline_customer.csv", borderline["transactions"])
+
+    print("Synthetic datasets (JSON & CSV) generated successfully in data/")
 
 
 if __name__ == "__main__":

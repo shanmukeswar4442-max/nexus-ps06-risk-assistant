@@ -4,7 +4,7 @@
   "account_type": "Standard Savings Account",
   "currency": "INR",
   "risk_profile": "Borderline / Low Confidence",
-  "total_count": 15,
+  "total_count": 11,
   "transactions": [
     {
       "transaction_id": "TXN-BOR-3001",
@@ -34,7 +34,7 @@
       "timestamp": "2026-05-19T19:10:00",
       "description": "Apparel Shopping",
       "payee": "Urban Fashion Outlet",
-      "amount": 6025.14,
+      "amount": 4131.15,
       "channel": "UPI",
       "category": "Shopping",
       "status": "Completed"
@@ -45,7 +45,7 @@
       "timestamp": "2026-05-26T19:10:00",
       "description": "Apparel Shopping",
       "payee": "Urban Fashion Outlet",
-      "amount": 5129.29,
+      "amount": 6240.94,
       "channel": "UPI",
       "category": "Shopping",
       "status": "Completed"
@@ -64,28 +64,6 @@
     {
       "transaction_id": "TXN-BOR-3006",
       "customer_id": "CUST-1003",
-      "timestamp": "2026-06-02T19:10:00",
-      "description": "Apparel Shopping",
-      "payee": "Urban Fashion Outlet",
-      "amount": 5652.4,
-      "channel": "UPI",
-      "category": "Shopping",
-      "status": "Completed"
-    },
-    {
-      "transaction_id": "TXN-BOR-3007",
-      "customer_id": "CUST-1003",
-      "timestamp": "2026-06-09T19:10:00",
-      "description": "Apparel Shopping",
-      "payee": "Urban Fashion Outlet",
-      "amount": 4179.86,
-      "channel": "UPI",
-      "category": "Shopping",
-      "status": "Completed"
-    },
-    {
-      "transaction_id": "TXN-BOR-3008",
-      "customer_id": "CUST-1003",
       "timestamp": "2026-06-15T09:30:00",
       "description": "Bi-weekly Professional Fee",
       "payee": "Global Logistics Corp India",
@@ -95,7 +73,7 @@
       "status": "Completed"
     },
     {
-      "transaction_id": "TXN-BOR-3009",
+      "transaction_id": "TXN-BOR-3007",
       "customer_id": "CUST-1003",
       "timestamp": "2026-07-01T09:30:00",
       "description": "Bi-weekly Professional Fee",
@@ -106,29 +84,18 @@
       "status": "Completed"
     },
     {
-      "transaction_id": "TXN-BOR-3010",
+      "transaction_id": "TXN-BOR-3008",
       "customer_id": "CUST-1003",
       "timestamp": "2026-07-07T19:10:00",
       "description": "Apparel Shopping",
       "payee": "Urban Fashion Outlet",
-      "amount": 5981.97,
+      "amount": 2905.36,
       "channel": "UPI",
       "category": "Shopping",
       "status": "Completed"
     },
     {
-      "transaction_id": "TXN-BOR-3011",
-      "customer_id": "CUST-1003",
-      "timestamp": "2026-07-14T19:10:00",
-      "description": "Apparel Shopping",
-      "payee": "Urban Fashion Outlet",
-      "amount": 4251.19,
-      "channel": "UPI",
-      "category": "Shopping",
-      "status": "Completed"
-    },
-    {
-      "transaction_id": "TXN-BOR-3012",
+      "transaction_id": "TXN-BOR-3009",
       "customer_id": "CUST-1003",
       "timestamp": "2026-07-15T09:30:00",
       "description": "Bi-weekly Professional Fee",
@@ -136,17 +103,6 @@
       "amount": 115000.0,
       "channel": "NEFT",
       "category": "Income",
-      "status": "Completed"
-    },
-    {
-      "transaction_id": "TXN-BOR-3013",
-      "customer_id": "CUST-1003",
-      "timestamp": "2026-07-21T19:10:00",
-      "description": "Apparel Shopping",
-      "payee": "Urban Fashion Outlet",
-      "amount": 4009.98,
-      "channel": "UPI",
-      "category": "Shopping",
       "status": "Completed"
     },
     {
@@ -161,12 +117,12 @@
       "status": "Completed"
     },
     {
-      "transaction_id": "TXN-BOR-3014",
+      "transaction_id": "TXN-BOR-3010",
       "customer_id": "CUST-1003",
       "timestamp": "2026-07-28T19:10:00",
       "description": "Apparel Shopping",
       "payee": "Urban Fashion Outlet",
-      "amount": 2995.12,
+      "amount": 2987.94,
       "channel": "UPI",
       "category": "Shopping",
       "status": "Completed"

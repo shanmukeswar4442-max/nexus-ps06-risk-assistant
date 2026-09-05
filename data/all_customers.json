@@ -5,15 +5,15 @@
     "account_type": "Personal Salary Account",
     "currency": "INR",
     "risk_profile": "Clean / Routine",
-    "total_count": 105,
+    "total_count": 104,
     "transactions": [
       {
         "transaction_id": "TXN-CLN-1003",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-01T08:23:00",
+        "timestamp": "2026-05-01T08:24:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 240.7,
+        "amount": 159.14,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -43,10 +43,10 @@
       {
         "transaction_id": "TXN-CLN-1004",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-02T11:22:00",
+        "timestamp": "2026-05-02T11:33:00",
         "description": "Weekly Supermarket Shopping",
         "payee": "DMart Supermarket",
-        "amount": 4095.87,
+        "amount": 4404.61,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
@@ -54,10 +54,10 @@
       {
         "transaction_id": "TXN-CLN-1005",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-04T08:29:00",
+        "timestamp": "2026-05-04T08:39:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 265.0,
+        "amount": 176.5,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -65,10 +65,10 @@
       {
         "transaction_id": "TXN-CLN-1006",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-05T08:43:00",
+        "timestamp": "2026-05-05T08:39:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 192.78,
+        "amount": 328.42,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -76,10 +76,10 @@
       {
         "transaction_id": "TXN-CLN-1007",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-06T08:43:00",
+        "timestamp": "2026-05-06T08:23:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 148.4,
+        "amount": 312.63,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -87,10 +87,10 @@
       {
         "transaction_id": "TXN-CLN-1008",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-07T08:25:00",
+        "timestamp": "2026-05-07T08:39:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 341.66,
+        "amount": 329.42,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -98,10 +98,10 @@
       {
         "transaction_id": "TXN-CLN-1009",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-08T08:26:00",
+        "timestamp": "2026-05-08T08:21:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 231.39,
+        "amount": 218.89,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -109,10 +109,10 @@
       {
         "transaction_id": "TXN-CLN-1010",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-09T11:27:00",
+        "timestamp": "2026-05-09T11:48:00",
         "description": "Weekly Supermarket Shopping",
         "payee": "DMart Supermarket",
-        "amount": 4297.18,
+        "amount": 3844.03,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
@@ -120,10 +120,10 @@
       {
         "transaction_id": "TXN-CLN-1011",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-11T08:43:00",
+        "timestamp": "2026-05-11T08:47:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 297.09,
+        "amount": 272.36,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -131,21 +131,10 @@
       {
         "transaction_id": "TXN-CLN-1012",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-12T08:32:00",
+        "timestamp": "2026-05-12T08:43:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 191.79,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1013",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-05-13T08:22:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 248.85,
+        "amount": 199.92,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -153,27 +142,16 @@
       {
         "transaction_id": "TXN-CLN-1014",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-14T08:40:00",
+        "timestamp": "2026-05-15T08:35:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 221.96,
+        "amount": 213.22,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1016",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-05-15T08:25:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 272.15,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1015",
+        "transaction_id": "TXN-CLN-1013",
         "customer_id": "CUST-1001",
         "timestamp": "2026-05-15T09:15:00",
         "description": "Bi-weekly Payroll Salary Credit",
@@ -184,23 +162,45 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1017",
+        "transaction_id": "TXN-CLN-1015",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-16T11:17:00",
+        "timestamp": "2026-05-16T11:41:00",
         "description": "Weekly Supermarket Shopping",
         "payee": "DMart Supermarket",
-        "amount": 5282.81,
+        "amount": 2977.31,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1018",
+        "transaction_id": "TXN-CLN-1016",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-18T08:48:00",
+        "timestamp": "2026-05-18T08:21:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 330.55,
+        "amount": 311.18,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1017",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-05-19T08:41:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 317.65,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1018",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-05-20T08:38:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 181.39,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -208,10 +208,10 @@
       {
         "transaction_id": "TXN-CLN-1019",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-19T08:40:00",
+        "timestamp": "2026-05-21T08:28:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 150.19,
+        "amount": 206.64,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -219,10 +219,10 @@
       {
         "transaction_id": "TXN-CLN-1020",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-20T08:22:00",
+        "timestamp": "2026-05-22T08:31:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 127.94,
+        "amount": 263.91,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -230,32 +230,32 @@
       {
         "transaction_id": "TXN-CLN-1021",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-21T08:36:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 335.18,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1022",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-05-23T11:10:00",
+        "timestamp": "2026-05-23T11:49:00",
         "description": "Weekly Supermarket Shopping",
         "payee": "DMart Supermarket",
-        "amount": 4682.92,
+        "amount": 3775.98,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1023",
+        "transaction_id": "TXN-CLN-1022",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-25T08:25:00",
+        "timestamp": "2026-05-25T08:21:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 309.58,
+        "amount": 340.13,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1023",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-05-26T08:41:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 286.1,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -263,10 +263,10 @@
       {
         "transaction_id": "TXN-CLN-1024",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-26T08:40:00",
+        "timestamp": "2026-05-27T08:39:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 328.97,
+        "amount": 242.59,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -274,10 +274,10 @@
       {
         "transaction_id": "TXN-CLN-1025",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-27T08:40:00",
+        "timestamp": "2026-05-28T08:38:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 308.45,
+        "amount": 179.38,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -285,38 +285,27 @@
       {
         "transaction_id": "TXN-CLN-1026",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-05-28T08:38:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 158.88,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1027",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-05-29T08:26:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 322.33,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1028",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-05-30T11:25:00",
+        "timestamp": "2026-05-30T11:39:00",
         "description": "Weekly Supermarket Shopping",
         "payee": "DMart Supermarket",
-        "amount": 3092.1,
+        "amount": 3350.31,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
         "transaction_id": "TXN-CLN-1029",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-06-01T08:28:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 235.45,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1027",
         "customer_id": "CUST-1001",
         "timestamp": "2026-06-01T09:15:00",
         "description": "Bi-weekly Payroll Salary Credit",
@@ -327,7 +316,7 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1030",
+        "transaction_id": "TXN-CLN-1028",
         "customer_id": "CUST-1001",
         "timestamp": "2026-06-01T10:30:00",
         "description": "Monthly House Rent Payment",
@@ -338,12 +327,23 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1031",
+        "transaction_id": "TXN-CLN-1030",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-03T08:39:00",
+        "timestamp": "2026-06-03T08:36:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 237.85,
+        "amount": 276.09,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1031",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-06-04T08:32:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 177.01,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -351,10 +351,10 @@
       {
         "transaction_id": "TXN-CLN-1032",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-04T08:22:00",
+        "timestamp": "2026-06-05T08:45:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 180.13,
+        "amount": 260.47,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -362,32 +362,32 @@
       {
         "transaction_id": "TXN-CLN-1033",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-05T08:29:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 289.48,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1034",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-06-06T11:16:00",
+        "timestamp": "2026-06-06T11:37:00",
         "description": "Weekly Supermarket Shopping",
         "payee": "DMart Supermarket",
-        "amount": 5563.95,
+        "amount": 5478.39,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1035",
+        "transaction_id": "TXN-CLN-1034",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-08T08:38:00",
+        "timestamp": "2026-06-08T08:20:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 338.7,
+        "amount": 163.9,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1035",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-06-09T08:38:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 344.01,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -395,10 +395,10 @@
       {
         "transaction_id": "TXN-CLN-1036",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-09T08:41:00",
+        "timestamp": "2026-06-10T08:29:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 220.65,
+        "amount": 284.56,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -406,10 +406,10 @@
       {
         "transaction_id": "TXN-CLN-1037",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-10T08:20:00",
+        "timestamp": "2026-06-11T08:43:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 136.12,
+        "amount": 275.31,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -417,10 +417,10 @@
       {
         "transaction_id": "TXN-CLN-1038",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-11T08:31:00",
+        "timestamp": "2026-06-12T08:43:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 253.74,
+        "amount": 222.78,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -428,38 +428,27 @@
       {
         "transaction_id": "TXN-CLN-1039",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-12T08:47:00",
+        "timestamp": "2026-06-13T11:42:00",
+        "description": "Weekly Supermarket Shopping",
+        "payee": "DMart Supermarket",
+        "amount": 3175.44,
+        "channel": "UPI",
+        "category": "Groceries",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1041",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-06-15T08:30:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 244.33,
+        "amount": 343.19,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
       },
       {
         "transaction_id": "TXN-CLN-1040",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-06-13T11:48:00",
-        "description": "Weekly Supermarket Shopping",
-        "payee": "DMart Supermarket",
-        "amount": 4198.46,
-        "channel": "UPI",
-        "category": "Groceries",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1042",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-06-15T08:37:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 317.03,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1041",
         "customer_id": "CUST-1001",
         "timestamp": "2026-06-15T09:15:00",
         "description": "Bi-weekly Payroll Salary Credit",
@@ -470,12 +459,23 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1043",
+        "transaction_id": "TXN-CLN-1042",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-16T08:47:00",
+        "timestamp": "2026-06-16T08:37:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 340.16,
+        "amount": 323.07,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1043",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-06-17T08:43:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 298.61,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -483,10 +483,10 @@
       {
         "transaction_id": "TXN-CLN-1044",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-17T08:35:00",
+        "timestamp": "2026-06-18T08:35:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 289.78,
+        "amount": 124.77,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -494,10 +494,10 @@
       {
         "transaction_id": "TXN-CLN-1045",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-18T08:21:00",
+        "timestamp": "2026-06-19T08:41:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 225.6,
+        "amount": 135.07,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -505,32 +505,32 @@
       {
         "transaction_id": "TXN-CLN-1046",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-19T08:50:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 230.24,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1047",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-06-20T11:35:00",
+        "timestamp": "2026-06-20T11:48:00",
         "description": "Weekly Supermarket Shopping",
         "payee": "DMart Supermarket",
-        "amount": 2907.25,
+        "amount": 5050.47,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1048",
+        "transaction_id": "TXN-CLN-1047",
         "customer_id": "CUST-1001",
         "timestamp": "2026-06-22T08:44:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 128.31,
+        "amount": 217.31,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1048",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-06-23T08:27:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 326.36,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -538,10 +538,10 @@
       {
         "transaction_id": "TXN-CLN-1049",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-23T08:43:00",
+        "timestamp": "2026-06-24T08:22:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 200.0,
+        "amount": 282.02,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -549,10 +549,10 @@
       {
         "transaction_id": "TXN-CLN-1050",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-24T08:35:00",
+        "timestamp": "2026-06-25T08:39:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 147.23,
+        "amount": 187.33,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -560,10 +560,10 @@
       {
         "transaction_id": "TXN-CLN-1051",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-25T08:47:00",
+        "timestamp": "2026-06-26T08:48:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 234.47,
+        "amount": 284.14,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -571,60 +571,49 @@
       {
         "transaction_id": "TXN-CLN-1052",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-26T08:47:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 288.64,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1053",
-        "customer_id": "CUST-1001",
         "timestamp": "2026-06-27T11:50:00",
         "description": "Weekly Supermarket Shopping",
         "payee": "DMart Supermarket",
-        "amount": 5873.31,
+        "amount": 5449.75,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1054",
+        "transaction_id": "TXN-CLN-1053",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-06-29T08:37:00",
+        "timestamp": "2026-06-29T08:31:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 199.73,
+        "amount": 155.07,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1054",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-06-30T08:45:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 258.62,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1057",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-07-01T08:46:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 213.48,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
       },
       {
         "transaction_id": "TXN-CLN-1055",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-06-30T08:47:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 211.18,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1058",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-07-01T08:40:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 191.49,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1056",
         "customer_id": "CUST-1001",
         "timestamp": "2026-07-01T09:15:00",
         "description": "Bi-weekly Payroll Salary Credit",
@@ -635,7 +624,7 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1057",
+        "transaction_id": "TXN-CLN-1056",
         "customer_id": "CUST-1001",
         "timestamp": "2026-07-01T10:30:00",
         "description": "Monthly House Rent Payment",
@@ -646,23 +635,34 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1059",
+        "transaction_id": "TXN-CLN-1058",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-02T08:28:00",
+        "timestamp": "2026-07-03T08:23:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 300.99,
+        "amount": 249.84,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
       },
       {
+        "transaction_id": "TXN-CLN-1059",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-07-04T11:16:00",
+        "description": "Weekly Supermarket Shopping",
+        "payee": "DMart Supermarket",
+        "amount": 2896.05,
+        "channel": "UPI",
+        "category": "Groceries",
+        "status": "Completed"
+      },
+      {
         "transaction_id": "TXN-CLN-1060",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-03T08:46:00",
+        "timestamp": "2026-07-06T08:22:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 211.45,
+        "amount": 194.06,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -670,21 +670,21 @@
       {
         "transaction_id": "TXN-CLN-1061",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-04T11:48:00",
-        "description": "Weekly Supermarket Shopping",
-        "payee": "DMart Supermarket",
-        "amount": 3981.73,
+        "timestamp": "2026-07-07T08:25:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 214.71,
         "channel": "UPI",
-        "category": "Groceries",
+        "category": "Dining",
         "status": "Completed"
       },
       {
         "transaction_id": "TXN-CLN-1062",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-06T08:30:00",
+        "timestamp": "2026-07-08T08:50:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 343.91,
+        "amount": 293.79,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -692,10 +692,10 @@
       {
         "transaction_id": "TXN-CLN-1063",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-07T08:49:00",
+        "timestamp": "2026-07-09T08:35:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 186.38,
+        "amount": 180.71,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -703,10 +703,10 @@
       {
         "transaction_id": "TXN-CLN-1064",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-08T08:30:00",
+        "timestamp": "2026-07-10T08:28:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 263.54,
+        "amount": 198.41,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -714,60 +714,49 @@
       {
         "transaction_id": "TXN-CLN-1065",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-09T08:36:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 287.17,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1066",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-07-11T11:42:00",
+        "timestamp": "2026-07-11T11:48:00",
         "description": "Weekly Supermarket Shopping",
         "payee": "DMart Supermarket",
-        "amount": 3942.61,
+        "amount": 2513.37,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
+        "transaction_id": "TXN-CLN-1066",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-07-13T08:30:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 333.77,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
         "transaction_id": "TXN-CLN-1067",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-13T08:42:00",
+        "timestamp": "2026-07-14T08:32:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 201.05,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1068",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-07-14T08:25:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 330.98,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1070",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-07-15T08:41:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 278.73,
+        "amount": 142.67,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
       },
       {
         "transaction_id": "TXN-CLN-1069",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-07-15T08:48:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 253.75,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1068",
         "customer_id": "CUST-1001",
         "timestamp": "2026-07-15T09:15:00",
         "description": "Bi-weekly Payroll Salary Credit",
@@ -778,12 +767,23 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1071",
+        "transaction_id": "TXN-CLN-1070",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-16T08:37:00",
+        "timestamp": "2026-07-16T08:50:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 297.84,
+        "amount": 235.31,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1071",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-07-17T08:35:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 171.56,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -791,32 +791,32 @@
       {
         "transaction_id": "TXN-CLN-1072",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-17T08:21:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 309.25,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1073",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-07-18T11:34:00",
+        "timestamp": "2026-07-18T11:22:00",
         "description": "Weekly Supermarket Shopping",
         "payee": "DMart Supermarket",
-        "amount": 4490.46,
+        "amount": 2884.34,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1074",
+        "transaction_id": "TXN-CLN-1073",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-20T08:29:00",
+        "timestamp": "2026-07-20T08:38:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 265.79,
+        "amount": 281.79,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1074",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-07-21T08:22:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 327.99,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -824,10 +824,10 @@
       {
         "transaction_id": "TXN-CLN-1075",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-21T08:47:00",
+        "timestamp": "2026-07-22T08:23:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 132.11,
+        "amount": 192.57,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -835,10 +835,10 @@
       {
         "transaction_id": "TXN-CLN-1076",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-22T08:50:00",
+        "timestamp": "2026-07-24T08:30:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 207.32,
+        "amount": 220.23,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -846,82 +846,38 @@
       {
         "transaction_id": "TXN-CLN-1077",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-23T08:23:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 255.8,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1078",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-07-25T11:31:00",
+        "timestamp": "2026-07-25T11:26:00",
         "description": "Weekly Supermarket Shopping",
         "payee": "DMart Supermarket",
-        "amount": 4085.67,
+        "amount": 4956.71,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1079",
+        "transaction_id": "TXN-CLN-1078",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-07-27T08:48:00",
+        "timestamp": "2026-07-28T08:44:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 323.54,
+        "amount": 256.8,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1079",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-07-29T08:26:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 332.12,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
       },
       {
         "transaction_id": "TXN-CLN-1080",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-07-28T08:37:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 260.72,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1081",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-07-29T08:44:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 240.99,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1082",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-07-30T08:43:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 188.52,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1083",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-07-31T08:47:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 300.71,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1084",
         "customer_id": "CUST-1001",
         "timestamp": "2026-08-01T09:15:00",
         "description": "Bi-weekly Payroll Salary Credit",
@@ -932,7 +888,7 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1085",
+        "transaction_id": "TXN-CLN-1081",
         "customer_id": "CUST-1001",
         "timestamp": "2026-08-01T10:30:00",
         "description": "Monthly House Rent Payment",
@@ -943,23 +899,67 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1086",
+        "transaction_id": "TXN-CLN-1082",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-01T11:22:00",
+        "timestamp": "2026-08-01T11:27:00",
         "description": "Weekly Supermarket Shopping",
         "payee": "DMart Supermarket",
-        "amount": 4833.6,
+        "amount": 5561.17,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1087",
+        "transaction_id": "TXN-CLN-1083",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-04T08:33:00",
+        "timestamp": "2026-08-03T08:33:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 349.57,
+        "amount": 332.5,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1084",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-08-04T08:26:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 273.61,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1085",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-08-05T08:43:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 184.5,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1086",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-08-06T08:25:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 293.44,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1087",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-08-07T08:37:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 258.9,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -967,21 +967,21 @@
       {
         "transaction_id": "TXN-CLN-1088",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-05T08:40:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 230.45,
+        "timestamp": "2026-08-08T11:20:00",
+        "description": "Weekly Supermarket Shopping",
+        "payee": "DMart Supermarket",
+        "amount": 5882.24,
         "channel": "UPI",
-        "category": "Dining",
+        "category": "Groceries",
         "status": "Completed"
       },
       {
         "transaction_id": "TXN-CLN-1089",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-06T08:32:00",
+        "timestamp": "2026-08-10T08:48:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 135.19,
+        "amount": 340.85,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -989,10 +989,10 @@
       {
         "transaction_id": "TXN-CLN-1090",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-07T08:45:00",
+        "timestamp": "2026-08-11T08:43:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 183.69,
+        "amount": 292.8,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -1000,49 +1000,27 @@
       {
         "transaction_id": "TXN-CLN-1091",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-08T11:34:00",
-        "description": "Weekly Supermarket Shopping",
-        "payee": "DMart Supermarket",
-        "amount": 6449.74,
+        "timestamp": "2026-08-12T08:36:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 170.54,
         "channel": "UPI",
-        "category": "Groceries",
+        "category": "Dining",
         "status": "Completed"
       },
       {
         "transaction_id": "TXN-CLN-1092",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-10T08:24:00",
+        "timestamp": "2026-08-14T08:23:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 265.85,
+        "amount": 270.92,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
       },
       {
         "transaction_id": "TXN-CLN-1093",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-08-11T08:28:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 268.44,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1094",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-08-14T08:26:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 165.2,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1095",
         "customer_id": "CUST-1001",
         "timestamp": "2026-08-15T09:15:00",
         "description": "Bi-weekly Payroll Salary Credit",
@@ -1053,23 +1031,45 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1096",
+        "transaction_id": "TXN-CLN-1094",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-15T11:18:00",
+        "timestamp": "2026-08-15T11:28:00",
         "description": "Weekly Supermarket Shopping",
         "payee": "DMart Supermarket",
-        "amount": 5504.73,
+        "amount": 5841.99,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-CLN-1097",
+        "transaction_id": "TXN-CLN-1095",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-17T08:31:00",
+        "timestamp": "2026-08-17T08:40:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 129.7,
+        "amount": 267.24,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1096",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-08-18T08:47:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 273.4,
+        "channel": "UPI",
+        "category": "Dining",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-CLN-1097",
+        "customer_id": "CUST-1001",
+        "timestamp": "2026-08-19T08:31:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 344.4,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -1077,10 +1077,10 @@
       {
         "transaction_id": "TXN-CLN-1098",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-18T08:20:00",
+        "timestamp": "2026-08-20T08:46:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 239.06,
+        "amount": 305.96,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -1088,10 +1088,10 @@
       {
         "transaction_id": "TXN-CLN-1099",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-19T08:29:00",
+        "timestamp": "2026-08-21T08:20:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 140.23,
+        "amount": 184.5,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -1099,21 +1099,21 @@
       {
         "transaction_id": "TXN-CLN-1100",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-20T08:20:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 348.67,
+        "timestamp": "2026-08-22T11:17:00",
+        "description": "Weekly Supermarket Shopping",
+        "payee": "DMart Supermarket",
+        "amount": 2791.21,
         "channel": "UPI",
-        "category": "Dining",
+        "category": "Groceries",
         "status": "Completed"
       },
       {
         "transaction_id": "TXN-CLN-1101",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-21T08:41:00",
+        "timestamp": "2026-08-24T08:45:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 341.76,
+        "amount": 213.02,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -1121,21 +1121,21 @@
       {
         "transaction_id": "TXN-CLN-1102",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-22T11:50:00",
-        "description": "Weekly Supermarket Shopping",
-        "payee": "DMart Supermarket",
-        "amount": 5400.84,
+        "timestamp": "2026-08-25T08:39:00",
+        "description": "Morning Chai & Breakfast",
+        "payee": "Chai Point",
+        "amount": 330.57,
         "channel": "UPI",
-        "category": "Groceries",
+        "category": "Dining",
         "status": "Completed"
       },
       {
         "transaction_id": "TXN-CLN-1103",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-24T08:44:00",
+        "timestamp": "2026-08-27T08:44:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 261.78,
+        "amount": 274.66,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -1143,21 +1143,10 @@
       {
         "transaction_id": "TXN-CLN-1104",
         "customer_id": "CUST-1001",
-        "timestamp": "2026-08-26T08:43:00",
+        "timestamp": "2026-08-28T08:38:00",
         "description": "Morning Chai & Breakfast",
         "payee": "Chai Point",
-        "amount": 229.97,
-        "channel": "UPI",
-        "category": "Dining",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-CLN-1105",
-        "customer_id": "CUST-1001",
-        "timestamp": "2026-08-27T08:34:00",
-        "description": "Morning Chai & Breakfast",
-        "payee": "Chai Point",
-        "amount": 347.99,
+        "amount": 213.12,
         "channel": "UPI",
         "category": "Dining",
         "status": "Completed"
@@ -1170,7 +1159,7 @@
     "account_type": "Privilege Savings Account",
     "currency": "INR",
     "risk_profile": "High Risk / Multiple Anomalies",
-    "total_count": 19,
+    "total_count": 25,
     "transactions": [
       {
         "transaction_id": "TXN-ANO-2001",
@@ -1197,27 +1186,16 @@
       {
         "transaction_id": "TXN-ANO-2003",
         "customer_id": "CUST-1002",
-        "timestamp": "2026-05-06T18:30:00",
+        "timestamp": "2026-05-13T18:30:00",
         "description": "Grocery Superstore",
         "payee": "Nature Basket Market",
-        "amount": 2844.42,
+        "amount": 4086.93,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
         "transaction_id": "TXN-ANO-2004",
-        "customer_id": "CUST-1002",
-        "timestamp": "2026-05-13T18:30:00",
-        "description": "Grocery Superstore",
-        "payee": "Nature Basket Market",
-        "amount": 2499.17,
-        "channel": "UPI",
-        "category": "Groceries",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-ANO-2005",
         "customer_id": "CUST-1002",
         "timestamp": "2026-05-15T09:00:00",
         "description": "Executive Salary Direct Credit",
@@ -1228,7 +1206,29 @@
         "status": "Completed"
       },
       {
+        "transaction_id": "TXN-ANO-2005",
+        "customer_id": "CUST-1002",
+        "timestamp": "2026-05-20T18:30:00",
+        "description": "Grocery Superstore",
+        "payee": "Nature Basket Market",
+        "amount": 2814.79,
+        "channel": "UPI",
+        "category": "Groceries",
+        "status": "Completed"
+      },
+      {
         "transaction_id": "TXN-ANO-2006",
+        "customer_id": "CUST-1002",
+        "timestamp": "2026-05-27T18:30:00",
+        "description": "Grocery Superstore",
+        "payee": "Nature Basket Market",
+        "amount": 2489.11,
+        "channel": "UPI",
+        "category": "Groceries",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-ANO-2007",
         "customer_id": "CUST-1002",
         "timestamp": "2026-06-01T09:00:00",
         "description": "Executive Salary Direct Credit",
@@ -1239,7 +1239,7 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-ANO-2007",
+        "transaction_id": "TXN-ANO-2008",
         "customer_id": "CUST-1002",
         "timestamp": "2026-06-02T10:15:00",
         "description": "Apartment Maintenance & Rent",
@@ -1250,7 +1250,29 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-ANO-2008",
+        "transaction_id": "TXN-ANO-2009",
+        "customer_id": "CUST-1002",
+        "timestamp": "2026-06-03T18:30:00",
+        "description": "Grocery Superstore",
+        "payee": "Nature Basket Market",
+        "amount": 3815.67,
+        "channel": "UPI",
+        "category": "Groceries",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-ANO-2010",
+        "customer_id": "CUST-1002",
+        "timestamp": "2026-06-10T18:30:00",
+        "description": "Grocery Superstore",
+        "payee": "Nature Basket Market",
+        "amount": 4118.32,
+        "channel": "UPI",
+        "category": "Groceries",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-ANO-2011",
         "customer_id": "CUST-1002",
         "timestamp": "2026-06-15T09:00:00",
         "description": "Executive Salary Direct Credit",
@@ -1261,29 +1283,29 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-ANO-2009",
+        "transaction_id": "TXN-ANO-2012",
         "customer_id": "CUST-1002",
         "timestamp": "2026-06-17T18:30:00",
         "description": "Grocery Superstore",
         "payee": "Nature Basket Market",
-        "amount": 3341.3,
+        "amount": 3990.8,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-ANO-2010",
+        "transaction_id": "TXN-ANO-2013",
         "customer_id": "CUST-1002",
         "timestamp": "2026-06-24T18:30:00",
         "description": "Grocery Superstore",
         "payee": "Nature Basket Market",
-        "amount": 3481.93,
+        "amount": 4410.26,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-ANO-2011",
+        "transaction_id": "TXN-ANO-2014",
         "customer_id": "CUST-1002",
         "timestamp": "2026-07-01T09:00:00",
         "description": "Executive Salary Direct Credit",
@@ -1294,7 +1316,18 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-ANO-2012",
+        "transaction_id": "TXN-ANO-2015",
+        "customer_id": "CUST-1002",
+        "timestamp": "2026-07-01T18:30:00",
+        "description": "Grocery Superstore",
+        "payee": "Nature Basket Market",
+        "amount": 2783.6,
+        "channel": "UPI",
+        "category": "Groceries",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-ANO-2016",
         "customer_id": "CUST-1002",
         "timestamp": "2026-07-02T10:15:00",
         "description": "Apartment Maintenance & Rent",
@@ -1305,7 +1338,18 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-ANO-2013",
+        "transaction_id": "TXN-ANO-2017",
+        "customer_id": "CUST-1002",
+        "timestamp": "2026-07-08T18:30:00",
+        "description": "Grocery Superstore",
+        "payee": "Nature Basket Market",
+        "amount": 2304.72,
+        "channel": "UPI",
+        "category": "Groceries",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-ANO-2018",
         "customer_id": "CUST-1002",
         "timestamp": "2026-07-15T09:00:00",
         "description": "Executive Salary Direct Credit",
@@ -1316,23 +1360,34 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-ANO-2014",
+        "transaction_id": "TXN-ANO-2019",
         "customer_id": "CUST-1002",
-        "timestamp": "2026-07-22T18:30:00",
+        "timestamp": "2026-07-15T18:30:00",
         "description": "Grocery Superstore",
         "payee": "Nature Basket Market",
-        "amount": 3034.9,
+        "amount": 2376.87,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-ANO-2015",
+        "transaction_id": "TXN-ANO-2020",
+        "customer_id": "CUST-1002",
+        "timestamp": "2026-07-22T18:30:00",
+        "description": "Grocery Superstore",
+        "payee": "Nature Basket Market",
+        "amount": 2757.86,
+        "channel": "UPI",
+        "category": "Groceries",
+        "status": "Completed"
+      },
+      {
+        "transaction_id": "TXN-ANO-2021",
         "customer_id": "CUST-1002",
         "timestamp": "2026-07-29T18:30:00",
         "description": "Grocery Superstore",
         "payee": "Nature Basket Market",
-        "amount": 2368.0,
+        "amount": 3855.23,
         "channel": "UPI",
         "category": "Groceries",
         "status": "Completed"
@@ -1389,7 +1444,7 @@
     "account_type": "Standard Savings Account",
     "currency": "INR",
     "risk_profile": "Borderline / Low Confidence",
-    "total_count": 15,
+    "total_count": 11,
     "transactions": [
       {
         "transaction_id": "TXN-BOR-3001",
@@ -1419,7 +1474,7 @@
         "timestamp": "2026-05-19T19:10:00",
         "description": "Apparel Shopping",
         "payee": "Urban Fashion Outlet",
-        "amount": 6025.14,
+        "amount": 4131.15,
         "channel": "UPI",
         "category": "Shopping",
         "status": "Completed"
@@ -1430,7 +1485,7 @@
         "timestamp": "2026-05-26T19:10:00",
         "description": "Apparel Shopping",
         "payee": "Urban Fashion Outlet",
-        "amount": 5129.29,
+        "amount": 6240.94,
         "channel": "UPI",
         "category": "Shopping",
         "status": "Completed"
@@ -1449,28 +1504,6 @@
       {
         "transaction_id": "TXN-BOR-3006",
         "customer_id": "CUST-1003",
-        "timestamp": "2026-06-02T19:10:00",
-        "description": "Apparel Shopping",
-        "payee": "Urban Fashion Outlet",
-        "amount": 5652.4,
-        "channel": "UPI",
-        "category": "Shopping",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-BOR-3007",
-        "customer_id": "CUST-1003",
-        "timestamp": "2026-06-09T19:10:00",
-        "description": "Apparel Shopping",
-        "payee": "Urban Fashion Outlet",
-        "amount": 4179.86,
-        "channel": "UPI",
-        "category": "Shopping",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-BOR-3008",
-        "customer_id": "CUST-1003",
         "timestamp": "2026-06-15T09:30:00",
         "description": "Bi-weekly Professional Fee",
         "payee": "Global Logistics Corp India",
@@ -1480,7 +1513,7 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-BOR-3009",
+        "transaction_id": "TXN-BOR-3007",
         "customer_id": "CUST-1003",
         "timestamp": "2026-07-01T09:30:00",
         "description": "Bi-weekly Professional Fee",
@@ -1491,29 +1524,18 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-BOR-3010",
+        "transaction_id": "TXN-BOR-3008",
         "customer_id": "CUST-1003",
         "timestamp": "2026-07-07T19:10:00",
         "description": "Apparel Shopping",
         "payee": "Urban Fashion Outlet",
-        "amount": 5981.97,
+        "amount": 2905.36,
         "channel": "UPI",
         "category": "Shopping",
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-BOR-3011",
-        "customer_id": "CUST-1003",
-        "timestamp": "2026-07-14T19:10:00",
-        "description": "Apparel Shopping",
-        "payee": "Urban Fashion Outlet",
-        "amount": 4251.19,
-        "channel": "UPI",
-        "category": "Shopping",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-BOR-3012",
+        "transaction_id": "TXN-BOR-3009",
         "customer_id": "CUST-1003",
         "timestamp": "2026-07-15T09:30:00",
         "description": "Bi-weekly Professional Fee",
@@ -1521,17 +1543,6 @@
         "amount": 115000.0,
         "channel": "NEFT",
         "category": "Income",
-        "status": "Completed"
-      },
-      {
-        "transaction_id": "TXN-BOR-3013",
-        "customer_id": "CUST-1003",
-        "timestamp": "2026-07-21T19:10:00",
-        "description": "Apparel Shopping",
-        "payee": "Urban Fashion Outlet",
-        "amount": 4009.98,
-        "channel": "UPI",
-        "category": "Shopping",
         "status": "Completed"
       },
       {
@@ -1546,12 +1557,12 @@
         "status": "Completed"
       },
       {
-        "transaction_id": "TXN-BOR-3014",
+        "transaction_id": "TXN-BOR-3010",
         "customer_id": "CUST-1003",
         "timestamp": "2026-07-28T19:10:00",
         "description": "Apparel Shopping",
         "payee": "Urban Fashion Outlet",
-        "amount": 2995.12,
+        "amount": 2987.94,
         "channel": "UPI",
         "category": "Shopping",
         "status": "Completed"

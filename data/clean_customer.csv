@@ -1,0 +1,105 @@
+transaction_id,customer_id,timestamp,description,payee,amount,channel,category,status
+TXN-CLN-1003,CUST-1001,2026-05-01T08:24:00,Morning Chai & Breakfast,Chai Point,159.14,UPI,Dining,Completed
+TXN-CLN-1001,CUST-1001,2026-05-01T09:15:00,Bi-weekly Payroll Salary Credit,Infosys Ltd Payroll,145000.0,NEFT,Income,Completed
+TXN-CLN-1002,CUST-1001,2026-05-01T10:30:00,Monthly House Rent Payment,Sharma Realty Properties,35000.0,UPI,Housing,Completed
+TXN-CLN-1004,CUST-1001,2026-05-02T11:33:00,Weekly Supermarket Shopping,DMart Supermarket,4404.61,UPI,Groceries,Completed
+TXN-CLN-1005,CUST-1001,2026-05-04T08:39:00,Morning Chai & Breakfast,Chai Point,176.5,UPI,Dining,Completed
+TXN-CLN-1006,CUST-1001,2026-05-05T08:39:00,Morning Chai & Breakfast,Chai Point,328.42,UPI,Dining,Completed
+TXN-CLN-1007,CUST-1001,2026-05-06T08:23:00,Morning Chai & Breakfast,Chai Point,312.63,UPI,Dining,Completed
+TXN-CLN-1008,CUST-1001,2026-05-07T08:39:00,Morning Chai & Breakfast,Chai Point,329.42,UPI,Dining,Completed
+TXN-CLN-1009,CUST-1001,2026-05-08T08:21:00,Morning Chai & Breakfast,Chai Point,218.89,UPI,Dining,Completed
+TXN-CLN-1010,CUST-1001,2026-05-09T11:48:00,Weekly Supermarket Shopping,DMart Supermarket,3844.03,UPI,Groceries,Completed
+TXN-CLN-1011,CUST-1001,2026-05-11T08:47:00,Morning Chai & Breakfast,Chai Point,272.36,UPI,Dining,Completed
+TXN-CLN-1012,CUST-1001,2026-05-12T08:43:00,Morning Chai & Breakfast,Chai Point,199.92,UPI,Dining,Completed
+TXN-CLN-1014,CUST-1001,2026-05-15T08:35:00,Morning Chai & Breakfast,Chai Point,213.22,UPI,Dining,Completed
+TXN-CLN-1013,CUST-1001,2026-05-15T09:15:00,Bi-weekly Payroll Salary Credit,Infosys Ltd Payroll,145000.0,NEFT,Income,Completed
+TXN-CLN-1015,CUST-1001,2026-05-16T11:41:00,Weekly Supermarket Shopping,DMart Supermarket,2977.31,UPI,Groceries,Completed
+TXN-CLN-1016,CUST-1001,2026-05-18T08:21:00,Morning Chai & Breakfast,Chai Point,311.18,UPI,Dining,Completed
+TXN-CLN-1017,CUST-1001,2026-05-19T08:41:00,Morning Chai & Breakfast,Chai Point,317.65,UPI,Dining,Completed
+TXN-CLN-1018,CUST-1001,2026-05-20T08:38:00,Morning Chai & Breakfast,Chai Point,181.39,UPI,Dining,Completed
+TXN-CLN-1019,CUST-1001,2026-05-21T08:28:00,Morning Chai & Breakfast,Chai Point,206.64,UPI,Dining,Completed
+TXN-CLN-1020,CUST-1001,2026-05-22T08:31:00,Morning Chai & Breakfast,Chai Point,263.91,UPI,Dining,Completed
+TXN-CLN-1021,CUST-1001,2026-05-23T11:49:00,Weekly Supermarket Shopping,DMart Supermarket,3775.98,UPI,Groceries,Completed
+TXN-CLN-1022,CUST-1001,2026-05-25T08:21:00,Morning Chai & Breakfast,Chai Point,340.13,UPI,Dining,Completed
+TXN-CLN-1023,CUST-1001,2026-05-26T08:41:00,Morning Chai & Breakfast,Chai Point,286.1,UPI,Dining,Completed
+TXN-CLN-1024,CUST-1001,2026-05-27T08:39:00,Morning Chai & Breakfast,Chai Point,242.59,UPI,Dining,Completed
+TXN-CLN-1025,CUST-1001,2026-05-28T08:38:00,Morning Chai & Breakfast,Chai Point,179.38,UPI,Dining,Completed
+TXN-CLN-1026,CUST-1001,2026-05-30T11:39:00,Weekly Supermarket Shopping,DMart Supermarket,3350.31,UPI,Groceries,Completed
+TXN-CLN-1029,CUST-1001,2026-06-01T08:28:00,Morning Chai & Breakfast,Chai Point,235.45,UPI,Dining,Completed
+TXN-CLN-1027,CUST-1001,2026-06-01T09:15:00,Bi-weekly Payroll Salary Credit,Infosys Ltd Payroll,145000.0,NEFT,Income,Completed
+TXN-CLN-1028,CUST-1001,2026-06-01T10:30:00,Monthly House Rent Payment,Sharma Realty Properties,35000.0,UPI,Housing,Completed
+TXN-CLN-1030,CUST-1001,2026-06-03T08:36:00,Morning Chai & Breakfast,Chai Point,276.09,UPI,Dining,Completed
+TXN-CLN-1031,CUST-1001,2026-06-04T08:32:00,Morning Chai & Breakfast,Chai Point,177.01,UPI,Dining,Completed
+TXN-CLN-1032,CUST-1001,2026-06-05T08:45:00,Morning Chai & Breakfast,Chai Point,260.47,UPI,Dining,Completed
+TXN-CLN-1033,CUST-1001,2026-06-06T11:37:00,Weekly Supermarket Shopping,DMart Supermarket,5478.39,UPI,Groceries,Completed
+TXN-CLN-1034,CUST-1001,2026-06-08T08:20:00,Morning Chai & Breakfast,Chai Point,163.9,UPI,Dining,Completed
+TXN-CLN-1035,CUST-1001,2026-06-09T08:38:00,Morning Chai & Breakfast,Chai Point,344.01,UPI,Dining,Completed
+TXN-CLN-1036,CUST-1001,2026-06-10T08:29:00,Morning Chai & Breakfast,Chai Point,284.56,UPI,Dining,Completed
+TXN-CLN-1037,CUST-1001,2026-06-11T08:43:00,Morning Chai & Breakfast,Chai Point,275.31,UPI,Dining,Completed
+TXN-CLN-1038,CUST-1001,2026-06-12T08:43:00,Morning Chai & Breakfast,Chai Point,222.78,UPI,Dining,Completed
+TXN-CLN-1039,CUST-1001,2026-06-13T11:42:00,Weekly Supermarket Shopping,DMart Supermarket,3175.44,UPI,Groceries,Completed
+TXN-CLN-1041,CUST-1001,2026-06-15T08:30:00,Morning Chai & Breakfast,Chai Point,343.19,UPI,Dining,Completed
+TXN-CLN-1040,CUST-1001,2026-06-15T09:15:00,Bi-weekly Payroll Salary Credit,Infosys Ltd Payroll,145000.0,NEFT,Income,Completed
+TXN-CLN-1042,CUST-1001,2026-06-16T08:37:00,Morning Chai & Breakfast,Chai Point,323.07,UPI,Dining,Completed
+TXN-CLN-1043,CUST-1001,2026-06-17T08:43:00,Morning Chai & Breakfast,Chai Point,298.61,UPI,Dining,Completed
+TXN-CLN-1044,CUST-1001,2026-06-18T08:35:00,Morning Chai & Breakfast,Chai Point,124.77,UPI,Dining,Completed
+TXN-CLN-1045,CUST-1001,2026-06-19T08:41:00,Morning Chai & Breakfast,Chai Point,135.07,UPI,Dining,Completed
+TXN-CLN-1046,CUST-1001,2026-06-20T11:48:00,Weekly Supermarket Shopping,DMart Supermarket,5050.47,UPI,Groceries,Completed
+TXN-CLN-1047,CUST-1001,2026-06-22T08:44:00,Morning Chai & Breakfast,Chai Point,217.31,UPI,Dining,Completed
+TXN-CLN-1048,CUST-1001,2026-06-23T08:27:00,Morning Chai & Breakfast,Chai Point,326.36,UPI,Dining,Completed
+TXN-CLN-1049,CUST-1001,2026-06-24T08:22:00,Morning Chai & Breakfast,Chai Point,282.02,UPI,Dining,Completed
+TXN-CLN-1050,CUST-1001,2026-06-25T08:39:00,Morning Chai & Breakfast,Chai Point,187.33,UPI,Dining,Completed
+TXN-CLN-1051,CUST-1001,2026-06-26T08:48:00,Morning Chai & Breakfast,Chai Point,284.14,UPI,Dining,Completed
+TXN-CLN-1052,CUST-1001,2026-06-27T11:50:00,Weekly Supermarket Shopping,DMart Supermarket,5449.75,UPI,Groceries,Completed
+TXN-CLN-1053,CUST-1001,2026-06-29T08:31:00,Morning Chai & Breakfast,Chai Point,155.07,UPI,Dining,Completed
+TXN-CLN-1054,CUST-1001,2026-06-30T08:45:00,Morning Chai & Breakfast,Chai Point,258.62,UPI,Dining,Completed
+TXN-CLN-1057,CUST-1001,2026-07-01T08:46:00,Morning Chai & Breakfast,Chai Point,213.48,UPI,Dining,Completed
+TXN-CLN-1055,CUST-1001,2026-07-01T09:15:00,Bi-weekly Payroll Salary Credit,Infosys Ltd Payroll,145000.0,NEFT,Income,Completed
+TXN-CLN-1056,CUST-1001,2026-07-01T10:30:00,Monthly House Rent Payment,Sharma Realty Properties,35000.0,UPI,Housing,Completed
+TXN-CLN-1058,CUST-1001,2026-07-03T08:23:00,Morning Chai & Breakfast,Chai Point,249.84,UPI,Dining,Completed
+TXN-CLN-1059,CUST-1001,2026-07-04T11:16:00,Weekly Supermarket Shopping,DMart Supermarket,2896.05,UPI,Groceries,Completed
+TXN-CLN-1060,CUST-1001,2026-07-06T08:22:00,Morning Chai & Breakfast,Chai Point,194.06,UPI,Dining,Completed
+TXN-CLN-1061,CUST-1001,2026-07-07T08:25:00,Morning Chai & Breakfast,Chai Point,214.71,UPI,Dining,Completed
+TXN-CLN-1062,CUST-1001,2026-07-08T08:50:00,Morning Chai & Breakfast,Chai Point,293.79,UPI,Dining,Completed
+TXN-CLN-1063,CUST-1001,2026-07-09T08:35:00,Morning Chai & Breakfast,Chai Point,180.71,UPI,Dining,Completed
+TXN-CLN-1064,CUST-1001,2026-07-10T08:28:00,Morning Chai & Breakfast,Chai Point,198.41,UPI,Dining,Completed
+TXN-CLN-1065,CUST-1001,2026-07-11T11:48:00,Weekly Supermarket Shopping,DMart Supermarket,2513.37,UPI,Groceries,Completed
+TXN-CLN-1066,CUST-1001,2026-07-13T08:30:00,Morning Chai & Breakfast,Chai Point,333.77,UPI,Dining,Completed
+TXN-CLN-1067,CUST-1001,2026-07-14T08:32:00,Morning Chai & Breakfast,Chai Point,142.67,UPI,Dining,Completed
+TXN-CLN-1069,CUST-1001,2026-07-15T08:48:00,Morning Chai & Breakfast,Chai Point,253.75,UPI,Dining,Completed
+TXN-CLN-1068,CUST-1001,2026-07-15T09:15:00,Bi-weekly Payroll Salary Credit,Infosys Ltd Payroll,145000.0,NEFT,Income,Completed
+TXN-CLN-1070,CUST-1001,2026-07-16T08:50:00,Morning Chai & Breakfast,Chai Point,235.31,UPI,Dining,Completed
+TXN-CLN-1071,CUST-1001,2026-07-17T08:35:00,Morning Chai & Breakfast,Chai Point,171.56,UPI,Dining,Completed
+TXN-CLN-1072,CUST-1001,2026-07-18T11:22:00,Weekly Supermarket Shopping,DMart Supermarket,2884.34,UPI,Groceries,Completed
+TXN-CLN-1073,CUST-1001,2026-07-20T08:38:00,Morning Chai & Breakfast,Chai Point,281.79,UPI,Dining,Completed
+TXN-CLN-1074,CUST-1001,2026-07-21T08:22:00,Morning Chai & Breakfast,Chai Point,327.99,UPI,Dining,Completed
+TXN-CLN-1075,CUST-1001,2026-07-22T08:23:00,Morning Chai & Breakfast,Chai Point,192.57,UPI,Dining,Completed
+TXN-CLN-1076,CUST-1001,2026-07-24T08:30:00,Morning Chai & Breakfast,Chai Point,220.23,UPI,Dining,Completed
+TXN-CLN-1077,CUST-1001,2026-07-25T11:26:00,Weekly Supermarket Shopping,DMart Supermarket,4956.71,UPI,Groceries,Completed
+TXN-CLN-1078,CUST-1001,2026-07-28T08:44:00,Morning Chai & Breakfast,Chai Point,256.8,UPI,Dining,Completed
+TXN-CLN-1079,CUST-1001,2026-07-29T08:26:00,Morning Chai & Breakfast,Chai Point,332.12,UPI,Dining,Completed
+TXN-CLN-1080,CUST-1001,2026-08-01T09:15:00,Bi-weekly Payroll Salary Credit,Infosys Ltd Payroll,145000.0,NEFT,Income,Completed
+TXN-CLN-1081,CUST-1001,2026-08-01T10:30:00,Monthly House Rent Payment,Sharma Realty Properties,35000.0,UPI,Housing,Completed
+TXN-CLN-1082,CUST-1001,2026-08-01T11:27:00,Weekly Supermarket Shopping,DMart Supermarket,5561.17,UPI,Groceries,Completed
+TXN-CLN-1083,CUST-1001,2026-08-03T08:33:00,Morning Chai & Breakfast,Chai Point,332.5,UPI,Dining,Completed
+TXN-CLN-1084,CUST-1001,2026-08-04T08:26:00,Morning Chai & Breakfast,Chai Point,273.61,UPI,Dining,Completed
+TXN-CLN-1085,CUST-1001,2026-08-05T08:43:00,Morning Chai & Breakfast,Chai Point,184.5,UPI,Dining,Completed
+TXN-CLN-1086,CUST-1001,2026-08-06T08:25:00,Morning Chai & Breakfast,Chai Point,293.44,UPI,Dining,Completed
+TXN-CLN-1087,CUST-1001,2026-08-07T08:37:00,Morning Chai & Breakfast,Chai Point,258.9,UPI,Dining,Completed
+TXN-CLN-1088,CUST-1001,2026-08-08T11:20:00,Weekly Supermarket Shopping,DMart Supermarket,5882.24,UPI,Groceries,Completed
+TXN-CLN-1089,CUST-1001,2026-08-10T08:48:00,Morning Chai & Breakfast,Chai Point,340.85,UPI,Dining,Completed
+TXN-CLN-1090,CUST-1001,2026-08-11T08:43:00,Morning Chai & Breakfast,Chai Point,292.8,UPI,Dining,Completed
+TXN-CLN-1091,CUST-1001,2026-08-12T08:36:00,Morning Chai & Breakfast,Chai Point,170.54,UPI,Dining,Completed
+TXN-CLN-1092,CUST-1001,2026-08-14T08:23:00,Morning Chai & Breakfast,Chai Point,270.92,UPI,Dining,Completed
+TXN-CLN-1093,CUST-1001,2026-08-15T09:15:00,Bi-weekly Payroll Salary Credit,Infosys Ltd Payroll,145000.0,NEFT,Income,Completed
+TXN-CLN-1094,CUST-1001,2026-08-15T11:28:00,Weekly Supermarket Shopping,DMart Supermarket,5841.99,UPI,Groceries,Completed
+TXN-CLN-1095,CUST-1001,2026-08-17T08:40:00,Morning Chai & Breakfast,Chai Point,267.24,UPI,Dining,Completed
+TXN-CLN-1096,CUST-1001,2026-08-18T08:47:00,Morning Chai & Breakfast,Chai Point,273.4,UPI,Dining,Completed
+TXN-CLN-1097,CUST-1001,2026-08-19T08:31:00,Morning Chai & Breakfast,Chai Point,344.4,UPI,Dining,Completed
+TXN-CLN-1098,CUST-1001,2026-08-20T08:46:00,Morning Chai & Breakfast,Chai Point,305.96,UPI,Dining,Completed
+TXN-CLN-1099,CUST-1001,2026-08-21T08:20:00,Morning Chai & Breakfast,Chai Point,184.5,UPI,Dining,Completed
+TXN-CLN-1100,CUST-1001,2026-08-22T11:17:00,Weekly Supermarket Shopping,DMart Supermarket,2791.21,UPI,Groceries,Completed
+TXN-CLN-1101,CUST-1001,2026-08-24T08:45:00,Morning Chai & Breakfast,Chai Point,213.02,UPI,Dining,Completed
+TXN-CLN-1102,CUST-1001,2026-08-25T08:39:00,Morning Chai & Breakfast,Chai Point,330.57,UPI,Dining,Completed
+TXN-CLN-1103,CUST-1001,2026-08-27T08:44:00,Morning Chai & Breakfast,Chai Point,274.66,UPI,Dining,Completed
+TXN-CLN-1104,CUST-1001,2026-08-28T08:38:00,Morning Chai & Breakfast,Chai Point,213.12,UPI,Dining,Completed

@@ -1,0 +1,26 @@
+transaction_id,customer_id,timestamp,description,payee,amount,channel,category,status
+TXN-ANO-2001,CUST-1002,2026-05-01T09:00:00,Executive Salary Direct Credit,Apex Global Solutions India,185000.0,RTGS,Income,Completed
+TXN-ANO-2002,CUST-1002,2026-05-02T10:15:00,Apartment Maintenance & Rent,Prestige Heights Housing,42000.0,Net Banking,Housing,Completed
+TXN-ANO-2003,CUST-1002,2026-05-13T18:30:00,Grocery Superstore,Nature Basket Market,4086.93,UPI,Groceries,Completed
+TXN-ANO-2004,CUST-1002,2026-05-15T09:00:00,Executive Salary Direct Credit,Apex Global Solutions India,185000.0,RTGS,Income,Completed
+TXN-ANO-2005,CUST-1002,2026-05-20T18:30:00,Grocery Superstore,Nature Basket Market,2814.79,UPI,Groceries,Completed
+TXN-ANO-2006,CUST-1002,2026-05-27T18:30:00,Grocery Superstore,Nature Basket Market,2489.11,UPI,Groceries,Completed
+TXN-ANO-2007,CUST-1002,2026-06-01T09:00:00,Executive Salary Direct Credit,Apex Global Solutions India,185000.0,RTGS,Income,Completed
+TXN-ANO-2008,CUST-1002,2026-06-02T10:15:00,Apartment Maintenance & Rent,Prestige Heights Housing,42000.0,Net Banking,Housing,Completed
+TXN-ANO-2009,CUST-1002,2026-06-03T18:30:00,Grocery Superstore,Nature Basket Market,3815.67,UPI,Groceries,Completed
+TXN-ANO-2010,CUST-1002,2026-06-10T18:30:00,Grocery Superstore,Nature Basket Market,4118.32,UPI,Groceries,Completed
+TXN-ANO-2011,CUST-1002,2026-06-15T09:00:00,Executive Salary Direct Credit,Apex Global Solutions India,185000.0,RTGS,Income,Completed
+TXN-ANO-2012,CUST-1002,2026-06-17T18:30:00,Grocery Superstore,Nature Basket Market,3990.8,UPI,Groceries,Completed
+TXN-ANO-2013,CUST-1002,2026-06-24T18:30:00,Grocery Superstore,Nature Basket Market,4410.26,UPI,Groceries,Completed
+TXN-ANO-2014,CUST-1002,2026-07-01T09:00:00,Executive Salary Direct Credit,Apex Global Solutions India,185000.0,RTGS,Income,Completed
+TXN-ANO-2015,CUST-1002,2026-07-01T18:30:00,Grocery Superstore,Nature Basket Market,2783.6,UPI,Groceries,Completed
+TXN-ANO-2016,CUST-1002,2026-07-02T10:15:00,Apartment Maintenance & Rent,Prestige Heights Housing,42000.0,Net Banking,Housing,Completed
+TXN-ANO-2017,CUST-1002,2026-07-08T18:30:00,Grocery Superstore,Nature Basket Market,2304.72,UPI,Groceries,Completed
+TXN-ANO-2018,CUST-1002,2026-07-15T09:00:00,Executive Salary Direct Credit,Apex Global Solutions India,185000.0,RTGS,Income,Completed
+TXN-ANO-2019,CUST-1002,2026-07-15T18:30:00,Grocery Superstore,Nature Basket Market,2376.87,UPI,Groceries,Completed
+TXN-ANO-2020,CUST-1002,2026-07-22T18:30:00,Grocery Superstore,Nature Basket Market,2757.86,UPI,Groceries,Completed
+TXN-ANO-2021,CUST-1002,2026-07-29T18:30:00,Grocery Superstore,Nature Basket Market,3855.23,UPI,Groceries,Completed
+TXN-88219,CUST-1002,2026-07-31T14:10:00,High-Value Overseas Wire Transfer,Apex Overseas Investment LLC,950000.0,Wire Transfer,Transfer,Completed
+TXN-88220,CUST-1002,2026-08-01T03:14:00,Instant Crypto Token Purchase,CryptoVault Exchange India,220000.0,IMPS,Crypto/Investments,Completed
+TXN-88221,CUST-1002,2026-08-01T03:42:00,Instant Crypto Token Purchase,CryptoVault Exchange India,260000.0,IMPS,Crypto/Investments,Completed
+TXN-88222,CUST-1002,2026-08-01T04:05:00,Instant Crypto Token Purchase,CryptoVault Exchange India,180000.0,IMPS,Crypto/Investments,Completed

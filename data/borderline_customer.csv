@@ -1,0 +1,12 @@
+transaction_id,customer_id,timestamp,description,payee,amount,channel,category,status
+TXN-BOR-3001,CUST-1003,2026-05-01T09:30:00,Bi-weekly Professional Fee,Global Logistics Corp India,115000.0,NEFT,Income,Completed
+TXN-BOR-3002,CUST-1003,2026-05-15T09:30:00,Bi-weekly Professional Fee,Global Logistics Corp India,115000.0,NEFT,Income,Completed
+TXN-BOR-3003,CUST-1003,2026-05-19T19:10:00,Apparel Shopping,Urban Fashion Outlet,4131.15,UPI,Shopping,Completed
+TXN-BOR-3004,CUST-1003,2026-05-26T19:10:00,Apparel Shopping,Urban Fashion Outlet,6240.94,UPI,Shopping,Completed
+TXN-BOR-3005,CUST-1003,2026-06-01T09:30:00,Bi-weekly Professional Fee,Global Logistics Corp India,115000.0,NEFT,Income,Completed
+TXN-BOR-3006,CUST-1003,2026-06-15T09:30:00,Bi-weekly Professional Fee,Global Logistics Corp India,115000.0,NEFT,Income,Completed
+TXN-BOR-3007,CUST-1003,2026-07-01T09:30:00,Bi-weekly Professional Fee,Global Logistics Corp India,115000.0,NEFT,Income,Completed
+TXN-BOR-3008,CUST-1003,2026-07-07T19:10:00,Apparel Shopping,Urban Fashion Outlet,2905.36,UPI,Shopping,Completed
+TXN-BOR-3009,CUST-1003,2026-07-15T09:30:00,Bi-weekly Professional Fee,Global Logistics Corp India,115000.0,NEFT,Income,Completed
+TXN-BOR-9901,CUST-1003,2026-07-28T00:45:00,Annual Premium Auto Insurance Renewal,ICICI Lombard Auto Insurance,45000.0,Debit Card,Insurance,Completed
+TXN-BOR-3010,CUST-1003,2026-07-28T19:10:00,Apparel Shopping,Urban Fashion Outlet,2987.94,UPI,Shopping,Completed
