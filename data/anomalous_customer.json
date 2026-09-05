@@ -1,0 +1,273 @@
+{
+  "customer_id": "CUST-1002",
+  "customer_name": "Marcus Vance",
+  "account_type": "Premium Checking",
+  "risk_profile": "High Risk / Multiple Anomalies",
+  "total_count": 24,
+  "transactions": [
+    {
+      "transaction_id": "TXN-ANO-2001",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-05-01T09:00:00",
+      "description": "Salary Direct Deposit",
+      "payee": "Apex Solutions Inc",
+      "amount": 3400.0,
+      "channel": "ACH",
+      "category": "Income",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2002",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-05-02T10:15:00",
+      "description": "Residential Lease",
+      "payee": "Metro Housing Corp",
+      "amount": 1400.0,
+      "channel": "ACH",
+      "category": "Housing",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2003",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-05-06T18:30:00",
+      "description": "Supermarket Purchase",
+      "payee": "Whole Harvest Market",
+      "amount": 63.41,
+      "channel": "Debit Card",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2004",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-05-13T18:30:00",
+      "description": "Supermarket Purchase",
+      "payee": "Whole Harvest Market",
+      "amount": 129.52,
+      "channel": "Debit Card",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2005",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-05-15T09:00:00",
+      "description": "Salary Direct Deposit",
+      "payee": "Apex Solutions Inc",
+      "amount": 3400.0,
+      "channel": "ACH",
+      "category": "Income",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2006",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-05-20T18:30:00",
+      "description": "Supermarket Purchase",
+      "payee": "Whole Harvest Market",
+      "amount": 106.23,
+      "channel": "Debit Card",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2007",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-06-01T09:00:00",
+      "description": "Salary Direct Deposit",
+      "payee": "Apex Solutions Inc",
+      "amount": 3400.0,
+      "channel": "ACH",
+      "category": "Income",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2008",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-06-02T10:15:00",
+      "description": "Residential Lease",
+      "payee": "Metro Housing Corp",
+      "amount": 1400.0,
+      "channel": "ACH",
+      "category": "Housing",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2009",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-06-03T18:30:00",
+      "description": "Supermarket Purchase",
+      "payee": "Whole Harvest Market",
+      "amount": 126.65,
+      "channel": "Debit Card",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2010",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-06-10T18:30:00",
+      "description": "Supermarket Purchase",
+      "payee": "Whole Harvest Market",
+      "amount": 72.15,
+      "channel": "Debit Card",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2011",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-06-15T09:00:00",
+      "description": "Salary Direct Deposit",
+      "payee": "Apex Solutions Inc",
+      "amount": 3400.0,
+      "channel": "ACH",
+      "category": "Income",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2012",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-06-17T18:30:00",
+      "description": "Supermarket Purchase",
+      "payee": "Whole Harvest Market",
+      "amount": 83.13,
+      "channel": "Debit Card",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2013",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-06-24T18:30:00",
+      "description": "Supermarket Purchase",
+      "payee": "Whole Harvest Market",
+      "amount": 112.02,
+      "channel": "Debit Card",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2014",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-07-01T09:00:00",
+      "description": "Salary Direct Deposit",
+      "payee": "Apex Solutions Inc",
+      "amount": 3400.0,
+      "channel": "ACH",
+      "category": "Income",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2015",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-07-02T10:15:00",
+      "description": "Residential Lease",
+      "payee": "Metro Housing Corp",
+      "amount": 1400.0,
+      "channel": "ACH",
+      "category": "Housing",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2016",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-07-08T18:30:00",
+      "description": "Supermarket Purchase",
+      "payee": "Whole Harvest Market",
+      "amount": 61.92,
+      "channel": "Debit Card",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2017",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-07-15T09:00:00",
+      "description": "Salary Direct Deposit",
+      "payee": "Apex Solutions Inc",
+      "amount": 3400.0,
+      "channel": "ACH",
+      "category": "Income",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2018",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-07-15T18:30:00",
+      "description": "Supermarket Purchase",
+      "payee": "Whole Harvest Market",
+      "amount": 67.76,
+      "channel": "Debit Card",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2019",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-07-22T18:30:00",
+      "description": "Supermarket Purchase",
+      "payee": "Whole Harvest Market",
+      "amount": 103.84,
+      "channel": "Debit Card",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-ANO-2020",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-07-29T18:30:00",
+      "description": "Supermarket Purchase",
+      "payee": "Whole Harvest Market",
+      "amount": 104.15,
+      "channel": "Debit Card",
+      "category": "Groceries",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-88219",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-07-31T14:10:00",
+      "description": "Outgoing International Wire Transfer",
+      "payee": "Apex Overseas Holdings LLC",
+      "amount": 9500.0,
+      "channel": "Wire Transfer",
+      "category": "Transfer",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-88220",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-08-01T03:14:00",
+      "description": "Instant Crypto Purchase",
+      "payee": "CryptoVault Exchange",
+      "amount": 2200.0,
+      "channel": "P2P Payment",
+      "category": "Crypto/Investments",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-88221",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-08-01T03:42:00",
+      "description": "Instant Crypto Purchase",
+      "payee": "CryptoVault Exchange",
+      "amount": 2600.0,
+      "channel": "P2P Payment",
+      "category": "Crypto/Investments",
+      "status": "Completed"
+    },
+    {
+      "transaction_id": "TXN-88222",
+      "customer_id": "CUST-1002",
+      "timestamp": "2026-08-01T04:05:00",
+      "description": "Instant Crypto Purchase",
+      "payee": "CryptoVault Exchange",
+      "amount": 1800.0,
+      "channel": "P2P Payment",
+      "category": "Crypto/Investments",
+      "status": "Completed"
+    }
+  ]
+}
