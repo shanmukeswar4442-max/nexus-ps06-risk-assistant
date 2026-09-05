@@ -5,7 +5,11 @@ Eliminates magic strings across the codebase.
 
 import os
 from typing import Optional
-from pydantic_settings import BaseSettings
+
+try:
+    from pydantic_settings import BaseSettings
+except ImportError:
+    from pydantic import BaseModel as BaseSettings
 
 
 class Settings(BaseSettings):
@@ -17,7 +21,7 @@ class Settings(BaseSettings):
     
     # Gemini Configuration
     GEMINI_MODEL: str = "gemini-2.5-flash"
-    DEFAULT_GEMINI_API_KEY: Optional[str] = None
+    DEFAULT_GEMINI_API_KEY: Optional[str] = os.environ.get("GEMINI_API_KEY")
     LLM_TIMEOUT_SECONDS: int = 10
     LLM_MAX_RETRIES: int = 3
     
@@ -32,11 +36,5 @@ class Settings(BaseSettings):
     ODD_HOURS_MIN_AMOUNT: float = 25000.0
     VELOCITY_BURST_MIN_AMOUNT: float = 100000.0
 
-    class Config:
-        env_file = ".env"
-        extra = "ignore"
 
-
-settings = Settings(
-    DEFAULT_GEMINI_API_KEY=os.environ.get("GEMINI_API_KEY")
-)
+settings = Settings()
