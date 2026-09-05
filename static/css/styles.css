@@ -325,14 +325,139 @@ body {
   background: #3fb950;
 }
 
-.btn-secondary {
+.header-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.key-status-indicator {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  padding: 4px 8px;
+  border-radius: 4px;
   background: var(--bg-tertiary);
+  color: var(--text-secondary);
+}
+
+.chip {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.chip-not-analyzed {
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+}
+
+.chip-clean {
+  background: rgba(46, 160, 67, 0.2);
+  color: var(--accent-green);
+  border: 1px solid rgba(46, 160, 67, 0.3);
+}
+
+.chip-attention {
+  background: rgba(248, 81, 73, 0.2);
+  color: var(--accent-red);
+  border: 1px solid rgba(248, 81, 73, 0.3);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  width: 90%;
+  max-width: 500px;
+  padding: 20px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h2 {
+  font-size: 16px;
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.key-input-group {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.key-input-group input {
+  flex: 1;
+  background: var(--bg-primary);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
-  padding: 6px 12px;
+  padding: 8px 12px;
   border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+}
+
+.settings-status-box {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
   font-size: 12px;
-  cursor: pointer;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.highlighted-row {
+  background: rgba(88, 166, 255, 0.25) !important;
+  outline: 2px solid var(--accent-blue);
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-accent {
+  background: var(--accent-blue);
+  color: #000;
+  font-weight: 600;
+}
+
+.btn-accent:hover {
+  background: #79c0ff;
 }
 
 .btn-secondary:hover {

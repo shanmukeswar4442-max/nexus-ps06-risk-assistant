@@ -1,15 +1,16 @@
 /**
- * NexusRisk AI — Transaction Risk Investigation Assistant Frontend Application Logic
- * Supports Real-Time Transaction Addition & Indian Rupees (₹) Formatting.
+ * NexusRisk AI — Interactive SPA Frontend Application Logic
+ * Supports: Customer Dashboard with Status Chips, Report Download, Clickable Citation Highlighting, Settings Session Keys, Upload (CSV/JSON), and Real-Time Transactions.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   let selectedCustomerId = 'CUST-1002'; // Default to anomalous customer
   let customTransactionsData = null;
   let currentAnalysisData = null;
+  let customerListCache = [];
 
-  // DOM Element References
-  const presetButtons = document.querySelectorAll('.preset-btn');
+  // DOM Elements
+  const customerPresetContainer = document.getElementById('customer-preset-buttons');
   const dropzone = document.getElementById('dropzone');
   const fileInput = document.getElementById('file-input');
   const browseBtn = document.getElementById('browse-btn');
@@ -36,28 +37,149 @@ document.addEventListener('DOMContentLoaded', () => {
   const narrativeReportBody = document.getElementById('narrative-report-body');
   const reportSourceTag = document.getElementById('report-source-tag');
   const copyReportBtn = document.getElementById('copy-report-btn');
+  const downloadReportBtn = document.getElementById('download-report-btn');
 
   const ledgerTbody = document.getElementById('ledger-tbody');
   const ledgerCountMeta = document.getElementById('ledger-count-meta');
   const filterBtns = document.querySelectorAll('.filter-btn');
+
+  // Settings Modal Elements
+  const openSettingsBtn = document.getElementById('open-settings-btn');
+  const closeSettingsBtn = document.getElementById('close-settings-btn');
+  const settingsModal = document.getElementById('settings-modal');
+  const sessionKeyInput = document.getElementById('session-key-input');
+  const toggleKeyVisBtn = document.getElementById('toggle-key-vis');
+  const saveKeyBtn = document.getElementById('save-key-btn');
+  const clearKeyBtn = document.getElementById('clear-key-btn');
+  const modalKeyStatus = document.getElementById('modal-key-status');
+  const headerKeyStatus = document.getElementById('header-key-status');
 
   // Set default datetime input to now
   const now = new Date();
   now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
   txnTimeInput.value = now.toISOString().slice(0, 16);
 
-  // 1. Customer Preset Button Event Handlers
-  presetButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      presetButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      selectedCustomerId = btn.getAttribute('data-cid');
-      customTransactionsData = null; // reset custom upload
-      runAnalysis();
+  // Initialize
+  fetchCustomerList();
+  checkApiKeyStatus();
+
+  // 1. Fetch & Render Customer List with Status Chips
+  async function fetchCustomerList() {
+    try {
+      const res = await fetch('/api/customers');
+      if (res.ok) {
+        const data = await res.json();
+        customerListCache = data.customers || [];
+        renderCustomerPresets();
+      }
+    } catch (e) {
+      console.error('Failed to fetch customers:', e);
+    }
+  }
+
+  function renderCustomerPresets() {
+    if (!customerPresetContainer) return;
+    
+    customerPresetContainer.innerHTML = customerListCache.map(c => {
+      const isActive = c.customer_id === selectedCustomerId && !customTransactionsData;
+      let chipHtml = '';
+      if (c.status_chip === 'Needs Attention') {
+        chipHtml = `<span class="chip chip-attention">Needs Attention</span>`;
+      } else if (c.status_chip === 'Clean') {
+        chipHtml = `<span class="chip chip-clean">Clean</span>`;
+      } else {
+        chipHtml = `<span class="chip chip-not-analyzed">Not Analyzed</span>`;
+      }
+
+      return `
+        <button class="preset-btn ${isActive ? 'active' : ''}" data-cid="${c.customer_id}">
+          <div class="btn-top">
+            <span class="c-name">${c.customer_name}</span>
+            ${chipHtml}
+          </div>
+          <div class="btn-sub">${c.customer_id} • ${c.total_transactions} txns (${c.risk_profile})</div>
+        </button>
+      `;
+    }).join('');
+
+    // Re-attach event listeners
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedCustomerId = btn.getAttribute('data-cid');
+        customTransactionsData = null;
+        renderCustomerPresets();
+        runAnalysis();
+      });
     });
+  }
+
+  // 2. Settings Modal Event Handlers
+  openSettingsBtn.addEventListener('click', () => {
+    settingsModal.classList.remove('hidden');
+    checkApiKeyStatus();
   });
 
-  // 2. Real-Time Add Transaction Form Submit Handler
+  closeSettingsBtn.addEventListener('click', () => settingsModal.classList.add('hidden'));
+
+  toggleKeyVisBtn.addEventListener('click', () => {
+    sessionKeyInput.type = sessionKeyInput.type === 'password' ? 'text' : 'password';
+  });
+
+  saveKeyBtn.addEventListener('click', async () => {
+    const key = sessionKeyInput.value.trim();
+    if (!key) return;
+    try {
+      const res = await fetch('/api/settings/set-key', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ api_key: key })
+      });
+      if (res.ok) {
+        alert('Runtime API key saved for this session!');
+        sessionKeyInput.value = '';
+        checkApiKeyStatus();
+        settingsModal.classList.add('hidden');
+      }
+    } catch (e) {
+      alert('Failed to set API key');
+    }
+  });
+
+  clearKeyBtn.addEventListener('click', async () => {
+    try {
+      await fetch('/api/settings/set-key', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ api_key: '' })
+      });
+      sessionKeyInput.value = '';
+      checkApiKeyStatus();
+      alert('Session API key cleared!');
+    } catch (e) {
+      console.error(e);
+    }
+  });
+
+  async function checkApiKeyStatus() {
+    try {
+      const res = await fetch('/api/settings/key-status');
+      if (res.ok) {
+        const data = await res.json();
+        if (data.active) {
+          const srcText = data.source === 'session' ? 'Session Override' : 'Environment Variable';
+          headerKeyStatus.textContent = `🟢 Key Active (${srcText})`;
+          modalKeyStatus.innerHTML = `<strong style="color: var(--accent-green)">🟢 Active</strong> — Key source: ${srcText}`;
+        } else {
+          headerKeyStatus.textContent = `⚪ No Key (Rule Fallback)`;
+          modalKeyStatus.innerHTML = `<strong style="color: var(--text-muted)">⚪ Inactive</strong> — No key configured. System uses deterministic rule fallback.`;
+        }
+      }
+    } catch (e) {
+      headerKeyStatus.textContent = `⚪ Key Status Unknown`;
+    }
+  }
+
+  // 3. Real-Time Add Transaction Form Handler
   addTxnForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -73,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
       status: "Completed"
     };
 
-    // If currently operating on a preset customer, fetch full baseline history first before adding live transaction
     if (!customTransactionsData) {
       try {
         const res = await fetch(`/api/customers/${selectedCustomerId}`);
@@ -88,10 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Add new live transaction
     customTransactionsData.push(newTxn);
-
-    // Reset form inputs for next entry
     txnPayeeInput.value = '';
     txnDescInput.value = '';
     txnAmountInput.value = '';
@@ -100,55 +218,51 @@ document.addEventListener('DOMContentLoaded', () => {
     runAnalysis();
   });
 
-  // 3. Drag & Drop File Upload Handlers
+  // 4. File Upload (CSV/JSON) Handler
   browseBtn.addEventListener('click', () => fileInput.click());
-
   fileInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (file) handleFileUpload(file);
+    if (e.target.files.length) handleFileUpload(e.target.files[0]);
   });
 
-  dropzone.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    dropzone.style.borderColor = '#58a6ff';
-  });
-
-  dropzone.addEventListener('dragleave', () => {
-    dropzone.style.borderColor = '#30363d';
-  });
-
+  dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.style.borderColor = '#58a6ff'; });
+  dropzone.addEventListener('dragleave', () => { dropzone.style.borderColor = '#30363d'; });
   dropzone.addEventListener('drop', (e) => {
     e.preventDefault();
     dropzone.style.borderColor = '#30363d';
-    if (e.dataTransfer.files.length) {
-      handleFileUpload(e.dataTransfer.files[0]);
-    }
+    if (e.dataTransfer.files.length) handleFileUpload(e.dataTransfer.files[0]);
   });
 
-  function handleFileUpload(file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      try {
-        const parsed = JSON.parse(e.target.result);
-        customTransactionsData = Array.isArray(parsed) ? parsed : (parsed.transactions || []);
-        selectedCustomerId = parsed.customer_id || 'CUSTOM-UPLOAD';
-        
-        presetButtons.forEach(b => b.classList.remove('active'));
-        alert(`Loaded ${customTransactionsData.length} transactions from uploaded JSON!`);
-        runAnalysis();
-      } catch (err) {
-        alert('Invalid JSON file format. Please upload a valid customer transaction history JSON.');
+  async function handleFileUpload(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    loadingSpinner.classList.remove('hidden');
+    try {
+      const res = await fetch('/api/upload', { method: 'POST', body: formData });
+      if (!res.ok) {
+        const errData = await res.json();
+        throw new Error(errData.detail || 'Upload failed');
       }
-    };
-    reader.readAsText(file);
+      const data = await res.json();
+      selectedCustomerId = data.customer_id;
+      currentAnalysisData = data.analysis_result;
+      customTransactionsData = null;
+
+      alert(`Uploaded & analyzed ${data.total_parsed} transactions for customer ${data.customer_id}!`);
+      fetchCustomerList();
+      renderDashboard(currentAnalysisData, null);
+    } catch (err) {
+      alert('Upload failed: ' + err.message);
+    } finally {
+      loadingSpinner.classList.add('hidden');
+    }
   }
 
-  // 4. Run Analysis Button
+  // 5. Run Analysis Engine
   analyzeBtn.addEventListener('click', () => runAnalysis());
 
   async function runAnalysis() {
     loadingSpinner.classList.remove('hidden');
-    
     try {
       let payload = {};
       if (customTransactionsData) {
@@ -163,9 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(payload)
       });
 
-      if (!response.ok) {
-        throw new Error(`API returned HTTP ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`API returned HTTP ${response.status}`);
 
       const data = await response.json();
       currentAnalysisData = data;
@@ -176,6 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cRes.ok) rawCustomer = await cRes.json();
       }
 
+      fetchCustomerList();
       renderDashboard(data, rawCustomer);
     } catch (err) {
       console.error('Analysis failed:', err);
@@ -185,17 +298,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 5. Render Dashboard Components
+  // 6. Render Dashboard Components
   function renderDashboard(data, rawCustomer) {
     const attentionNeeded = data.attention_needed;
 
-    // Headline Status Banner
     attentionStatusEl.innerHTML = attentionNeeded
       ? `<div class="status-box yes">⚠️ ATTENTION NEEDED: YES</div>`
       : `<div class="status-box no">✅ ATTENTION NEEDED: NO</div>`;
 
     const cName = rawCustomer ? rawCustomer.customer_name : 'Customer ' + data.customer_id;
-    const cType = rawCustomer ? rawCustomer.account_type : 'Standard Account';
+    const cType = rawCustomer ? rawCustomer.account_type : 'Uploaded Dataset';
     customerMetaEl.innerHTML = `Customer ID: <strong>${data.customer_id}</strong> (${cName}) • <span>${cType}</span>`;
 
     riskScoreValEl.textContent = data.overall_risk_score;
@@ -209,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
       riskScoreValEl.style.color = '#2ea043';
     }
 
-    // Triggered Rules
+    // Triggered Rules with Clickable Citation Badges
     const rules = data.triggered_rules || [];
     ruleCountTag.textContent = `${rules.length} Rule${rules.length === 1 ? '' : 's'} Triggered`;
 
@@ -223,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="badge ${r.severity === 'HIGH' ? 'badge-high' : 'badge-borderline'}">${r.severity}</span>
           </div>
           <p class="rule-desc">${r.description}</p>
-          <div class="rule-txs">Flagged IDs: ${r.flagged_transaction_ids.map(id => `<code>${id}</code>`).join(', ')}</div>
+          <div class="rule-txs">Flagged IDs: ${r.flagged_transaction_ids.map(id => `<code class="citation-tag" data-txid="${id}">${id}</code>`).join(', ')}</div>
         </div>
       `).join('');
     }
@@ -257,9 +369,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const allTxs = customTransactionsData ? customTransactionsData : (rawCustomer ? rawCustomer.transactions : []);
     const flaggedSet = new Set(data.flagged_transaction_ids || []);
     renderLedger(allTxs, flaggedSet, 'all');
+
+    // Attach Click Event to Citations for Instant Highlighting
+    document.querySelectorAll('.citation-tag').forEach(tag => {
+      tag.addEventListener('click', () => {
+        const txid = tag.getAttribute('data-txid');
+        highlightTransactionRow(txid);
+      });
+    });
   }
 
-  // 6. Render Transaction Table with Indian Rupee formatting
+  // 7. Render Transaction Table
   function renderLedger(txs, flaggedSet, filterMode) {
     const displayTxs = filterMode === 'flagged' ? txs.filter(t => flaggedSet.has(t.transaction_id)) : txs;
     ledgerCountMeta.textContent = `Showing ${displayTxs.length} of ${txs.length} total transactions`;
@@ -272,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ledgerTbody.innerHTML = displayTxs.map(t => {
       const isFlagged = flaggedSet.has(t.transaction_id);
       return `
-        <tr class="${isFlagged ? 'flagged-row' : ''}">
+        <tr id="row-${t.transaction_id}" class="${isFlagged ? 'flagged-row' : ''}">
           <td style="font-family: var(--font-mono); font-weight: 600;">${t.transaction_id}</td>
           <td>${formatDate(t.timestamp)}</td>
           <td>${t.description || 'N/A'}</td>
@@ -285,24 +405,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
   }
 
-  // Filter Buttons Handler
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filterMode = btn.getAttribute('data-filter');
-      if (currentAnalysisData) {
-        const flaggedSet = new Set(currentAnalysisData.flagged_transaction_ids || []);
-        if (customTransactionsData) {
-          renderLedger(customTransactionsData, flaggedSet, filterMode);
-        } else {
-          fetch(`/api/customers/${selectedCustomerId}`)
-            .then(r => r.json())
-            .then(cData => renderLedger(cData.transactions || [], flaggedSet, filterMode))
-            .catch(() => renderLedger([], flaggedSet, filterMode));
-        }
+  function highlightTransactionRow(txid) {
+    document.querySelectorAll('.ledger-table tr').forEach(r => r.classList.remove('highlighted-row'));
+    const targetRow = document.getElementById(`row-${txid}`);
+    if (targetRow) {
+      targetRow.classList.add('highlighted-row');
+      targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  // Download Report (.md)
+  downloadReportBtn.addEventListener('click', async () => {
+    if (!currentAnalysisData || !currentAnalysisData.narrative_report) return;
+    try {
+      const res = await fetch('/api/export', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          customer_id: selectedCustomerId,
+          report_content: currentAnalysisData.narrative_report,
+          format: 'markdown'
+        })
+      });
+      if (res.ok) {
+        const text = await res.text();
+        const blob = new Blob([text], { type: 'text/markdown' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Investigation_Report_${selectedCustomerId}.md`;
+        a.click();
+        URL.revokeObjectURL(url);
       }
-    });
+    } catch (e) {
+      alert('Failed to download report');
+    }
   });
 
   // Copy Report Button
@@ -310,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentAnalysisData && currentAnalysisData.narrative_report) {
       navigator.clipboard.writeText(currentAnalysisData.narrative_report);
       copyReportBtn.textContent = '✅ Copied!';
-      setTimeout(() => copyReportBtn.textContent = '📋 Copy Report', 2000);
+      setTimeout(() => copyReportBtn.textContent = '📋 Copy', 2000);
     }
   });
 
@@ -322,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
       .replace(/^\*\*([^*]+)\*\*/gim, '<strong>$1</strong>')
       .replace(/\*\*([^*]+)\*\*/gim, '<strong>$1</strong>')
-      .replace(/`([^`]+)`/gim, '<code>$1</code>')
+      .replace(/`([^`]+)`/gim, '<code class="citation-tag" data-txid="$1">$1</code>')
       .replace(/^- (.*$)/gim, '<li>$1</li>')
       .replace(/^1\. (.*$)/gim, '<li>$1</li>')
       .replace(/\n\n/g, '<br><br>');
@@ -339,6 +476,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Initial Load: Analyze default customer (CUST-1002)
+  // Initial Load
   runAnalysis();
 });

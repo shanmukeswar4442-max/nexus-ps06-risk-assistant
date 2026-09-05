@@ -17,54 +17,34 @@
         <div class="logo-icon">🛡️</div>
         <div>
           <h1>NexusRisk Assistant</h1>
-          <p class="subtitle">Banking Fraud Desk — Deterministic Risk Engine + Gemini Narrative Layer (INR Edition)</p>
+          <p class="subtitle">Banking Fraud Desk — Pure-Python Rule Matrix + Grounded Gemini LLM</p>
         </div>
       </div>
-      <div class="header-badges">
+      <div class="header-right-actions">
+        <span class="key-status-indicator" id="header-key-status">⚪ Checking Key Status...</span>
+        <button class="btn-secondary" id="open-settings-btn">⚙️ Settings</button>
         <span class="track-badge">TRACK_ID=PS06</span>
-        <span class="status-badge" id="system-status">● System Ready (INR ₹)</span>
       </div>
     </header>
 
-    <!-- Main Grid -->
+    <!-- Main Layout -->
     <main class="main-layout">
       <!-- Sidebar Controls -->
       <aside class="sidebar-panel">
         <div class="panel-card">
-          <h2>Select Customer Profile</h2>
-          <p class="panel-desc">Choose a pre-generated multi-month history, upload JSON, or enter live transactions in real-time.</p>
+          <h2>Customer Dashboard</h2>
+          <p class="panel-desc">Select a profile to view transaction history and run risk analysis.</p>
           
+          <!-- Customer Preset Cards with Status Chips -->
           <div class="customer-presets" id="customer-preset-buttons">
-            <button class="preset-btn active" data-cid="CUST-1002">
-              <div class="btn-top">
-                <span class="c-name">Marcus Vance</span>
-                <span class="badge badge-high">High Risk</span>
-              </div>
-              <div class="btn-sub">CUST-1002 • Planted Anomalies (₹9.5L Wire + Crypto)</div>
-            </button>
-
-            <button class="preset-btn" data-cid="CUST-1001">
-              <div class="btn-top">
-                <span class="c-name">Sarah Jenkins</span>
-                <span class="badge badge-clean">Clean</span>
-              </div>
-              <div class="btn-sub">CUST-1001 • Routine Activity (UPI / Rent)</div>
-            </button>
-
-            <button class="preset-btn" data-cid="CUST-1003">
-              <div class="btn-top">
-                <span class="c-name">Elena Rostova</span>
-                <span class="badge badge-borderline">Borderline</span>
-              </div>
-              <div class="btn-sub">CUST-1003 • Ambiguous Insurance Premium</div>
-            </button>
+            <!-- Injected JS -->
           </div>
 
-          <div class="divider"><span>OR ENTER REAL-TIME DATA</span></div>
+          <div class="divider"><span>ENTER LIVE TRANSACTION</span></div>
 
           <!-- Real-Time Interactive Transaction Form -->
           <div class="form-card">
-            <h3>⚡ Add Live Transaction (INR ₹)</h3>
+            <h3>⚡ Add Real-Time Transaction (INR ₹)</h3>
             <form id="add-txn-form">
               <div class="form-group">
                 <label>Date & Time</label>
@@ -113,17 +93,17 @@
                 </select>
               </div>
 
-              <button type="submit" class="btn-primary-small">➕ Add Transaction & Analyze</button>
+              <button type="submit" class="btn-primary-small">➕ Add & Analyze Live</button>
             </form>
           </div>
 
-          <div class="divider"><span>OR UPLOAD CUSTOM JSON</span></div>
+          <div class="divider"><span>UPLOAD CSV / JSON</span></div>
 
           <div class="upload-dropzone" id="dropzone">
-            <input type="file" id="file-input" accept=".json" hidden>
+            <input type="file" id="file-input" accept=".json,.csv" hidden>
             <div class="dropzone-content">
               <span class="upload-icon">📁</span>
-              <p>Drag & drop transaction JSON here</p>
+              <p>Drag & drop transaction CSV or JSON</p>
               <button class="btn-secondary" id="browse-btn">Browse File</button>
             </div>
           </div>
@@ -134,15 +114,15 @@
         </div>
       </aside>
 
-      <!-- Results View -->
+      <!-- Content Panel -->
       <section class="content-panel">
         <!-- Loading State -->
         <div class="loading-state hidden" id="loading-spinner">
           <div class="spinner"></div>
-          <p>Evaluating deterministic risk rules & synthesizing Gemini narrative...</p>
+          <p>Evaluating deterministic risk rules & synthesizing Gemini narrative report...</p>
         </div>
 
-        <!-- Investigation Dashboard Content -->
+        <!-- Investigation Dashboard View -->
         <div id="investigation-dashboard">
           <!-- Headline Status Banner -->
           <div class="headline-banner" id="headline-banner">
@@ -170,7 +150,6 @@
 
           <!-- Grid: Triggered Rules & Baseline Stats -->
           <div class="dashboard-grid">
-            <!-- Triggered Rules Card -->
             <div class="grid-card">
               <div class="card-header">
                 <h3>Triggered Risk Rules</h3>
@@ -181,11 +160,10 @@
               </div>
             </div>
 
-            <!-- Customer Baseline Stats Card -->
             <div class="grid-card">
               <div class="card-header">
                 <h3>Customer Baseline Profile (INR ₹)</h3>
-                <span class="baseline-tag">Historical Metrics</span>
+                <span class="baseline-tag">Historical Baseline</span>
               </div>
               <div class="stats-grid" id="baseline-stats-container">
                 <!-- Injected JS -->
@@ -200,7 +178,10 @@
                 <h3>Grounded Investigation Narrative Report</h3>
                 <span class="report-source-tag" id="report-source-tag">Source: Gemini 2.5 Flash</span>
               </div>
-              <button class="btn-sm" id="copy-report-btn">📋 Copy Report</button>
+              <div class="header-actions">
+                <button class="btn-sm" id="copy-report-btn">📋 Copy</button>
+                <button class="btn-sm btn-accent" id="download-report-btn">📥 Download Report (.md)</button>
+              </div>
             </div>
             <div class="narrative-body markdown-body" id="narrative-report-body">
               <!-- Injected Markdown -->
@@ -212,7 +193,7 @@
             <div class="card-header">
               <div class="header-left">
                 <h3>Transaction History Ledger</h3>
-                <span class="ledger-subtitle" id="ledger-count-meta">Showing all transactions</span>
+                <span class="ledger-subtitle" id="ledger-count-meta">Click a cited ID to highlight row</span>
               </div>
               <div class="ledger-filters">
                 <button class="filter-btn active" data-filter="all">All Transactions</button>
@@ -242,6 +223,33 @@
         </div>
       </section>
     </main>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay hidden" id="settings-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2>⚙️ System & API Key Settings</h2>
+          <button class="close-modal-btn" id="close-settings-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="settings-section">
+            <label class="settings-label">Gemini API Key Runtime Override</label>
+            <p class="settings-desc">Optionally paste your Gemini API key here for this session. It is kept <strong>in memory only</strong> — never written to disk, never logged, and never committed.</p>
+            <div class="key-input-group">
+              <input type="password" id="session-key-input" placeholder="Paste AIzaSy... API key here">
+              <button class="btn-secondary" id="toggle-key-vis">👁️</button>
+            </div>
+            <div class="settings-status-box" id="modal-key-status">
+              Checking status...
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-secondary" id="clear-key-btn">Clear Session Key</button>
+          <button class="btn-primary-small" id="save-key-btn">Save Key for Session</button>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="app-footer">
