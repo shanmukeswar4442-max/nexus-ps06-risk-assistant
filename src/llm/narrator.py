@@ -16,11 +16,14 @@ from src.core.logging_config import logger, mask_sensitive
 from src.core.models import RiskAnalysisResult, Transaction
 
 
-def generate_template_fallback(result: RiskAnalysisResult, raw_transactions: List[Dict[str, Any]]) -> str:
+def generate_template_fallback(result: Any, raw_transactions: List[Dict[str, Any]]) -> str:
     """
     Deterministic fallback reporter used if Gemini API is missing, offline, or times out.
     Guarantees 100% reliable system operation without hallucination.
     """
+    if isinstance(result, dict):
+        result = RiskAnalysisResult(**result)
+
     customer_id = result.customer_id
     attention_needed = result.attention_needed
     confidence = result.confidence_level
@@ -82,7 +85,7 @@ def generate_template_fallback(result: RiskAnalysisResult, raw_transactions: Lis
 
 
 def generate_investigation_report(
-    result: RiskAnalysisResult,
+    result: Any,
     raw_transactions: List[Dict[str, Any]],
     api_key_override: Optional[str] = None
 ) -> RiskAnalysisResult:
@@ -92,6 +95,9 @@ def generate_investigation_report(
     1. api_key_override (if provided by user in Settings)
     2. GEMINI_API_KEY environment variable / config
     """
+    if isinstance(result, dict):
+        result = RiskAnalysisResult(**result)
+
     effective_api_key = api_key_override or settings.DEFAULT_GEMINI_API_KEY
     
     if not effective_api_key:

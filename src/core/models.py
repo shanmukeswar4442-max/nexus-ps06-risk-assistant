@@ -42,6 +42,20 @@ class RuleFinding(BaseModel):
     flagged_transaction_ids: List[str] = Field(default_factory=list)
     evidence: Dict[str, Any] = Field(default_factory=dict)
 
+    def __getitem__(self, item: str) -> Any:
+        try:
+            return getattr(self, item)
+        except AttributeError:
+            raise KeyError(item)
+
+    def __contains__(self, item: str) -> bool:
+        return hasattr(self, item)
+
+    def get(self, item: str, default: Any = None) -> Any:
+        if item in self:
+            return self[item]
+        return default
+
 
 class CustomerSummaryStats(BaseModel):
     total_transactions: int = 0
@@ -52,6 +66,20 @@ class CustomerSummaryStats(BaseModel):
     known_payees_count: int = 0
     established_channels: List[str] = Field(default_factory=list)
     currency: str = "INR"
+
+    def __getitem__(self, item: str) -> Any:
+        try:
+            return getattr(self, item)
+        except AttributeError:
+            raise KeyError(item)
+
+    def __contains__(self, item: str) -> bool:
+        return hasattr(self, item)
+
+    def get(self, item: str, default: Any = None) -> Any:
+        if item in self:
+            return self[item]
+        return default
 
 
 class RiskAnalysisResult(BaseModel):
@@ -65,6 +93,24 @@ class RiskAnalysisResult(BaseModel):
     narrative_report: Optional[str] = None
     report_source: str = "deterministic_fallback"  # gemini_llm or deterministic_fallback
     fallback_reason: Optional[str] = None
+
+    def __getitem__(self, item: str) -> Any:
+        if item == "source":
+            return self.report_source
+        try:
+            return getattr(self, item)
+        except AttributeError:
+            raise KeyError(item)
+
+    def __contains__(self, item: str) -> bool:
+        if item == "source":
+            return True
+        return hasattr(self, item)
+
+    def get(self, item: str, default: Any = None) -> Any:
+        if item in self:
+            return self[item]
+        return default
 
 
 class AnalysisRequest(BaseModel):

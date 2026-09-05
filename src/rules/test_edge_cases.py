@@ -12,6 +12,8 @@ import json
 from pathlib import Path
 import pytest
 
+from src.core.config import settings
+from src.core.models import RiskAnalysisResult
 from src.rules.engine import evaluate_customer_risk, RiskRuleEngine
 from src.llm.narrator import generate_investigation_report, generate_template_fallback
 
@@ -34,7 +36,7 @@ def test_malformed_string_amounts_and_missing_fields():
 
     # Rule engine must process without throwing an exception
     result = evaluate_customer_risk(malformed_txs, "CUST-MALFORMED")
-    assert isinstance(result, dict)
+    assert isinstance(result, (dict, RiskAnalysisResult))
     assert "attention_needed" in result
     assert "overall_risk_score" in result
     assert result["overall_risk_score"] >= 0
@@ -48,7 +50,7 @@ def test_invalid_timestamps():
     ]
 
     result = evaluate_customer_risk(bad_time_txs, "CUST-BAD-TIME")
-    assert isinstance(result, dict)
+    assert isinstance(result, (dict, RiskAnalysisResult))
     assert result["customer_id"] == "CUST-BAD-TIME"
 
 
@@ -58,6 +60,7 @@ def test_gemini_exception_degradation(monkeypatch):
         raise RuntimeError("Simulated Gemini API Network Timeout (504)")
 
     monkeypatch.setenv("GEMINI_API_KEY", "fake_key_for_testing")
+    monkeypatch.setattr(settings, "DEFAULT_GEMINI_API_KEY", "fake_key_for_testing")
     
     # Force genai client to fail
     import sys
