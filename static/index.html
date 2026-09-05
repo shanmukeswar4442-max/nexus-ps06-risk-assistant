@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusRisk AI — Transaction Risk Investigation Assistant (PS06)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-group">
+        <div class="logo-icon">🛡️</div>
+        <div>
+          <h1>NexusRisk Assistant</h1>
+          <p class="subtitle">Banking Fraud Desk — Deterministic Risk Engine + Gemini Narrative Layer</p>
+        </div>
+      </div>
+      <div class="header-badges">
+        <span class="track-badge">TRACK_ID=PS06</span>
+        <span class="status-badge" id="system-status">● System Ready</span>
+      </div>
+    </header>
+
+    <!-- Main Grid -->
+    <main class="main-layout">
+      <!-- Sidebar Controls -->
+      <aside class="sidebar-panel">
+        <div class="panel-card">
+          <h2>Select Customer Profile</h2>
+          <p class="panel-desc">Choose a pre-generated multi-month transaction history or upload custom JSON data.</p>
+          
+          <div class="customer-presets" id="customer-preset-buttons">
+            <button class="preset-btn active" data-cid="CUST-1002">
+              <div class="btn-top">
+                <span class="c-name">Marcus Vance</span>
+                <span class="badge badge-high">High Risk</span>
+              </div>
+              <div class="btn-sub">CUST-1002 • Planted Anomalies (3 rules)</div>
+            </button>
+
+            <button class="preset-btn" data-cid="CUST-1001">
+              <div class="btn-top">
+                <span class="c-name">Sarah Jenkins</span>
+                <span class="badge badge-clean">Clean</span>
+              </div>
+              <div class="btn-sub">CUST-1001 • Routine Activity (0 rules)</div>
+            </button>
+
+            <button class="preset-btn" data-cid="CUST-1003">
+              <div class="btn-top">
+                <span class="c-name">Elena Rostova</span>
+                <span class="badge badge-borderline">Borderline</span>
+              </div>
+              <div class="btn-sub">CUST-1003 • Low Confidence / Restraint</div>
+            </button>
+          </div>
+
+          <div class="divider"><span>OR UPLOAD CUSTOM</span></div>
+
+          <div class="upload-dropzone" id="dropzone">
+            <input type="file" id="file-input" accept=".json" hidden>
+            <div class="dropzone-content">
+              <span class="upload-icon">📁</span>
+              <p>Drag & drop transaction JSON here</p>
+              <button class="btn-secondary" id="browse-btn">Browse File</button>
+            </div>
+          </div>
+
+          <button class="btn-primary" id="analyze-btn">
+            <span>⚡ Run Risk Investigation</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Results View -->
+      <section class="content-panel">
+        <!-- Loading State -->
+        <div class="loading-state hidden" id="loading-spinner">
+          <div class="spinner"></div>
+          <p>Evaluating deterministic risk rules & synthesizing Gemini narrative...</p>
+        </div>
+
+        <!-- Investigation Dashboard Content -->
+        <div id="investigation-dashboard">
+          <!-- Headline Status Banner -->
+          <div class="headline-banner" id="headline-banner">
+            <div class="headline-left">
+              <div class="headline-status" id="attention-status">
+                <!-- Injected JS -->
+              </div>
+              <div class="headline-customer" id="customer-meta-display">
+                <!-- Injected JS -->
+              </div>
+            </div>
+            
+            <div class="headline-right">
+              <div class="score-card">
+                <span class="score-label">OVERALL RISK SCORE</span>
+                <span class="score-value" id="risk-score-val">0</span>
+                <span class="score-max">/ 100</span>
+              </div>
+              <div class="confidence-card">
+                <span class="confidence-label">CONFIDENCE</span>
+                <span class="confidence-value" id="confidence-val">NONE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grid: Triggered Rules & Baseline Stats -->
+          <div class="dashboard-grid">
+            <!-- Triggered Rules Card -->
+            <div class="grid-card">
+              <div class="card-header">
+                <h3>Triggered Risk Rules</h3>
+                <span class="rule-count-badge" id="rule-count-tag">0 Rules</span>
+              </div>
+              <div class="rule-list" id="triggered-rules-container">
+                <!-- Injected JS -->
+              </div>
+            </div>
+
+            <!-- Customer Baseline Stats Card -->
+            <div class="grid-card">
+              <div class="card-header">
+                <h3>Customer Baseline Profile</h3>
+                <span class="baseline-tag">Historical Metrics</span>
+              </div>
+              <div class="stats-grid" id="baseline-stats-container">
+                <!-- Injected JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Grounded Narrative Report -->
+          <div class="narrative-card">
+            <div class="card-header">
+              <div class="header-left">
+                <h3>Grounded Investigation Narrative Report</h3>
+                <span class="report-source-tag" id="report-source-tag">Source: Gemini 2.5 Flash</span>
+              </div>
+              <button class="btn-sm" id="copy-report-btn">📋 Copy Report</button>
+            </div>
+            <div class="narrative-body markdown-body" id="narrative-report-body">
+              <!-- Injected Markdown -->
+            </div>
+          </div>
+
+          <!-- Transaction Ledger -->
+          <div class="ledger-card">
+            <div class="card-header">
+              <div class="header-left">
+                <h3>Transaction History Ledger</h3>
+                <span class="ledger-subtitle" id="ledger-count-meta">Showing all transactions</span>
+              </div>
+              <div class="ledger-filters">
+                <button class="filter-btn active" data-filter="all">All Transactions</button>
+                <button class="filter-btn" data-filter="flagged">Flagged Only ⚠️</button>
+              </div>
+            </div>
+            <div class="table-wrapper">
+              <table class="ledger-table">
+                <thead>
+                  <tr>
+                    <th>Tx ID</th>
+                    <th>Date & Time</th>
+                    <th>Description</th>
+                    <th>Payee</th>
+                    <th>Channel</th>
+                    <th class="text-right">Amount</th>
+                    <th>Risk Status</th>
+                  </tr>
+                </thead>
+                <tbody id="ledger-tbody">
+                  <!-- Injected JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>NexusTiq24 PS06 Fraud Desk Assistant • Pure-Python Risk Engine + Gemini Grounded LLM • Hands judgment to human investigator</p>
+    </footer>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
